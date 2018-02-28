@@ -23,17 +23,97 @@ Partial Class EmbodegaloFRM
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EmbodegaloFRM))
+        Me.showEmbodegarBTN = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.etiquetaComercialTXT = New System.Windows.Forms.TextBox()
+        Me.precioUnidadTXT = New System.Windows.Forms.TextBox()
+        Me.cantidadTXT = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
+        '
+        'showEmbodegarBTN
+        '
+        Me.showEmbodegarBTN.Location = New System.Drawing.Point(26, 104)
+        Me.showEmbodegarBTN.Name = "showEmbodegarBTN"
+        Me.showEmbodegarBTN.Size = New System.Drawing.Size(149, 23)
+        Me.showEmbodegarBTN.TabIndex = 0
+        Me.showEmbodegarBTN.Text = "Embodegar Nuevo"
+        Me.showEmbodegarBTN.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(23, 13)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(95, 13)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Etiqueta Comercial"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(23, 39)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(74, 13)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "Precio Unidad"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(23, 69)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(52, 13)
+        Me.Label3.TabIndex = 3
+        Me.Label3.Text = "Cantidad "
+        '
+        'etiquetaComercialTXT
+        '
+        Me.etiquetaComercialTXT.Location = New System.Drawing.Point(137, 13)
+        Me.etiquetaComercialTXT.Name = "etiquetaComercialTXT"
+        Me.etiquetaComercialTXT.Size = New System.Drawing.Size(181, 20)
+        Me.etiquetaComercialTXT.TabIndex = 4
+        '
+        'precioUnidadTXT
+        '
+        Me.precioUnidadTXT.Location = New System.Drawing.Point(137, 39)
+        Me.precioUnidadTXT.Name = "precioUnidadTXT"
+        Me.precioUnidadTXT.Size = New System.Drawing.Size(181, 20)
+        Me.precioUnidadTXT.TabIndex = 5
+        '
+        'cantidadTXT
+        '
+        Me.cantidadTXT.Location = New System.Drawing.Point(137, 66)
+        Me.cantidadTXT.Name = "cantidadTXT"
+        Me.cantidadTXT.Size = New System.Drawing.Size(100, 20)
+        Me.cantidadTXT.TabIndex = 6
         '
         'EmbodegaloFRM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(292, 273)
+        Me.ClientSize = New System.Drawing.Size(561, 273)
+        Me.Controls.Add(Me.cantidadTXT)
+        Me.Controls.Add(Me.precioUnidadTXT)
+        Me.Controls.Add(Me.etiquetaComercialTXT)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.showEmbodegarBTN)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "EmbodegaloFRM"
-        Me.Text = "EmbodegaloFRM"
+        Me.Text = "EmBodegaLO"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
+
+    Friend WithEvents showEmbodegarBTN As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents etiquetaComercialTXT As TextBox
+    Friend WithEvents precioUnidadTXT As TextBox
+    Friend WithEvents cantidadTXT As TextBox
 End Class
