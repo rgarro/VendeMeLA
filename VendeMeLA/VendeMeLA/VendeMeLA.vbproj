@@ -109,6 +109,7 @@
     <Compile Include="VendeloFRM.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="VendemeloLib\Pocos\Articulo.vb" />
     <Compile Include="VendemeloLib\Producto.vb" />
   </ItemGroup>
   <ItemGroup>
