@@ -3,6 +3,14 @@
     Private Errors As New List(Of String)
     Private nuevo As Producto = New Producto
 
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+        System.Console.WriteLine("no sea bruto vote por ")
+
+    End Sub
+
     Private Function esValidoEmbodegable()
         Dim isValid As Boolean = True
         'Etiqueta del producto
