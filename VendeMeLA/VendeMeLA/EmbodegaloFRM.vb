@@ -4,10 +4,9 @@
     Private nuevo As Producto = New Producto
 
     Public Sub New()
-
         ' This call is required by the designer.
         InitializeComponent()
-        System.Console.WriteLine("no sea bruto vote por ")
+        'System.Console.WriteLine("no sea bruto vote por ")
 
     End Sub
 
@@ -40,11 +39,29 @@
     Private Sub showEmbodegarBTN_Click(sender As Object, e As EventArgs) Handles showEmbodegarBTN.Click
         If (Me.esValidoEmbodegable()) Then
             Me.obtenerDatosProductoNuevo()
-            MessageBox.Show(Me.nuevo.ToString)
+            Me.GuardarArticulo()
         Else
             Dim errorsStr As String = String.Join(Environment.NewLine, Me.Errors)
             MessageBox.Show(errorsStr)
             Me.Errors.Clear()
         End If
     End Sub
+
+    Private Sub GuardarArticulo()
+        Using db As LiteDB.LiteDatabase = New LiteDB.LiteDatabase("VendeMela.db")
+            'System.Console.WriteLine(db)
+            Dim articulos = db.GetCollection(Of Articulo)("articulo")
+            Dim articulo As Articulo = New Articulo With {
+                .id = 1,
+                .cantidad = Me.cantidadTXT.Text,
+                .etiqueta = Me.etiquetaComercialTXT.Text,
+                .precio = Me.precioUnidadTXT.Text
+            }
+            articulos.Insert(articulo)
+            Dim res = articulos.FindAll
+            System.Console.WriteLine(res)
+
+        End Using
+    End Sub
+
 End Class
