@@ -51,17 +51,32 @@
         Using db As LiteDB.LiteDatabase = New LiteDB.LiteDatabase("VendeMela.db")
             'System.Console.WriteLine(db)
             Dim articulos = db.GetCollection(Of Articulo)("articulo")
+            Dim r = articulos.FindAll
             Dim articulo As Articulo = New Articulo With {
-                .id = 1,
+                .id = Me.GetNextArticuloID(),
                 .cantidad = Me.cantidadTXT.Text,
                 .etiqueta = Me.etiquetaComercialTXT.Text,
                 .precio = Me.precioUnidadTXT.Text
             }
             articulos.Insert(articulo)
             Dim res = articulos.FindAll
-            System.Console.WriteLine(res)
+            'System.Console.WriteLine(res)
+            For Each larticulo As Articulo In res
+                MessageBox.Show(larticulo.etiqueta)
+            Next larticulo
+
 
         End Using
     End Sub
+
+    Private Function GetNextArticuloID()
+        Dim nextId As Integer
+        Using db As LiteDB.LiteDatabase = New LiteDB.LiteDatabase("VendeMela.db")
+            Dim articulos = db.GetCollection(Of Articulo)("articulo")
+            Dim r = articulos.FindAll
+            nextId = r.Count + 1
+        End Using
+        Return nextId
+    End Function
 
 End Class
