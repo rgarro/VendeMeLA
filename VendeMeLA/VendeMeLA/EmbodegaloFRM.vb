@@ -50,23 +50,35 @@
     Private Sub GuardarArticulo()
         Using db As LiteDB.LiteDatabase = New LiteDB.LiteDatabase("VendeMela.db")
             'System.Console.WriteLine(db)
-            Dim articulos = db.GetCollection(Of Articulo)("articulo")
-            Dim r = articulos.FindAll
-            Dim articulo As Articulo = New Articulo With {
-                .id = Me.GetNextArticuloID(),
-                .cantidad = Me.cantidadTXT.Text,
-                .etiqueta = Me.etiquetaComercialTXT.Text,
-                .precio = Me.precioUnidadTXT.Text
-            }
-            articulos.Insert(articulo)
-            Dim res = articulos.FindAll
-            'System.Console.WriteLine(res)
-            For Each larticulo As Articulo In res
-                MessageBox.Show(larticulo.etiqueta)
-            Next larticulo
+            Dim isExistingArticle = Me.CheckIfEtiquetaExists()
+            If Not isExistingArticle Then
+                Dim articulos = db.GetCollection(Of Articulo)("articulo")
+                Dim r = articulos.FindAll
+                Dim articulo As Articulo = New Articulo With {
+                    .id = Me.GetNextArticuloID(),
+                    .cantidad = Me.cantidadTXT.Text,
+                    .etiqueta = Me.etiquetaComercialTXT.Text,
+                    .precio = Me.precioUnidadTXT.Text
+                }
+                articulos.Insert(articulo)
+                Me.CleanForm()
+            Else
+                MessageBox.Show(etiquetaComercialTXT.Text & "Articulo Existe.")
+            End If
 
+            'Dim res = articulos.FindAll
+            'System.Console.WriteLine(res)
+            'For Each larticulo As Articulo In res
+            'MessageBox.Show(larticulo.etiqueta)
+            'Next larticulo
 
         End Using
+    End Sub
+
+    Private Sub CleanForm()
+        Me.cantidadTXT.Text = ""
+        Me.etiquetaComercialTXT.Text = ""
+        Me.precioUnidadTXT.Text = ""
     End Sub
 
     Private Function GetNextArticuloID()
@@ -77,6 +89,19 @@
             nextId = r.Count + 1
         End Using
         Return nextId
+    End Function
+
+    Private Function CheckIfEtiquetaExists()
+        Dim etiquetaExists As Boolean = False
+        Using db As LiteDB.LiteDatabase = New LiteDB.LiteDatabase("VendeMela.db")
+            Dim articulos = db.GetCollection(Of Articulo)("articulo")
+            Dim query As LiteDB.Query
+            Dim results = articulos.FindOne(query.EQ("etiqueta", Me.etiquetaComercialTXT.Text))
+            System.Console.WriteLine(results)
+            'Dim r = articulos.FindAll
+
+        End Using
+        Return etiquetaExists
     End Function
 
 End Class
