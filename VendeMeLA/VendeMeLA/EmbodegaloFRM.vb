@@ -96,10 +96,11 @@
         Using db As LiteDB.LiteDatabase = New LiteDB.LiteDatabase("VendeMela.db")
             Dim articulos = db.GetCollection(Of Articulo)("articulo")
             Dim query As LiteDB.Query
-            Dim results = articulos.FindOne(query.EQ("etiqueta", Me.etiquetaComercialTXT.Text))
-            System.Console.WriteLine(results)
-            'Dim r = articulos.FindAll
-
+            Dim result = articulos.FindOne(query.EQ("etiqueta", Me.etiquetaComercialTXT.Text))
+            System.Console.WriteLine(result)
+            If Not IsNothing(result) Then
+                etiquetaExists = True
+            End If
         End Using
         Return etiquetaExists
     End Function
