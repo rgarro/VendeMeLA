@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class EmbodegaloFRM
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class EmbodegaloFRM
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EmbodegaloFRM))
         Me.showEmbodegarBTN = New System.Windows.Forms.Button()
@@ -31,9 +31,6 @@ Partial Class EmbodegaloFRM
         Me.precioUnidadTXT = New System.Windows.Forms.TextBox()
         Me.cantidadTXT = New System.Windows.Forms.TextBox()
         Me.listViewEmbodegados = New System.Windows.Forms.ListView()
-        Me.Etiqueta = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.Cantidad = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.Precio = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SuspendLayout()
         '
         'showEmbodegarBTN
@@ -95,7 +92,6 @@ Partial Class EmbodegaloFRM
         '
         'listViewEmbodegados
         '
-        Me.listViewEmbodegados.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Etiqueta, Me.Cantidad, Me.Precio})
         Me.listViewEmbodegados.Location = New System.Drawing.Point(54, 148)
         Me.listViewEmbodegados.Name = "listViewEmbodegados"
         Me.listViewEmbodegados.Size = New System.Drawing.Size(451, 104)
@@ -131,7 +127,4 @@ Partial Class EmbodegaloFRM
     Friend WithEvents precioUnidadTXT As TextBox
     Friend WithEvents cantidadTXT As TextBox
     Friend WithEvents listViewEmbodegados As ListView
-    Friend WithEvents Etiqueta As ColumnHeader
-    Friend WithEvents Cantidad As ColumnHeader
-    Friend WithEvents Precio As ColumnHeader
 End Class
