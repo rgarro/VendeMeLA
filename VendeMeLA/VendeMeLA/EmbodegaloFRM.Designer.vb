@@ -30,6 +30,10 @@ Partial Class EmbodegaloFRM
         Me.etiquetaComercialTXT = New System.Windows.Forms.TextBox()
         Me.precioUnidadTXT = New System.Windows.Forms.TextBox()
         Me.cantidadTXT = New System.Windows.Forms.TextBox()
+        Me.listViewEmbodegados = New System.Windows.Forms.ListView()
+        Me.Etiqueta = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Cantidad = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Precio = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SuspendLayout()
         '
         'showEmbodegarBTN
@@ -89,11 +93,21 @@ Partial Class EmbodegaloFRM
         Me.cantidadTXT.Size = New System.Drawing.Size(100, 20)
         Me.cantidadTXT.TabIndex = 6
         '
+        'listViewEmbodegados
+        '
+        Me.listViewEmbodegados.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Etiqueta, Me.Cantidad, Me.Precio})
+        Me.listViewEmbodegados.Location = New System.Drawing.Point(54, 148)
+        Me.listViewEmbodegados.Name = "listViewEmbodegados"
+        Me.listViewEmbodegados.Size = New System.Drawing.Size(451, 104)
+        Me.listViewEmbodegados.TabIndex = 7
+        Me.listViewEmbodegados.UseCompatibleStateImageBehavior = False
+        '
         'EmbodegaloFRM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(561, 273)
+        Me.ClientSize = New System.Drawing.Size(561, 309)
+        Me.Controls.Add(Me.listViewEmbodegados)
         Me.Controls.Add(Me.cantidadTXT)
         Me.Controls.Add(Me.precioUnidadTXT)
         Me.Controls.Add(Me.etiquetaComercialTXT)
@@ -116,4 +130,8 @@ Partial Class EmbodegaloFRM
     Friend WithEvents etiquetaComercialTXT As TextBox
     Friend WithEvents precioUnidadTXT As TextBox
     Friend WithEvents cantidadTXT As TextBox
+    Friend WithEvents listViewEmbodegados As ListView
+    Friend WithEvents Etiqueta As ColumnHeader
+    Friend WithEvents Cantidad As ColumnHeader
+    Friend WithEvents Precio As ColumnHeader
 End Class

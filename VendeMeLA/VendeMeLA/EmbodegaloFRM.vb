@@ -2,12 +2,35 @@
 
     Private Errors As New List(Of String)
     Private nuevo As Producto = New Producto
+    Private mdb As LiteDB.LiteDatabase
 
     Public Sub New()
         ' This call is required by the designer.
         InitializeComponent()
         'System.Console.WriteLine("no sea bruto vote por ")
+        Using db As LiteDB.LiteDatabase = New LiteDB.LiteDatabase("VendeMela.db")
+            Me.mdb = db
+        End Using
+        Me.InitList()
+        Me.FillProductsList()
+    End Sub
 
+    Private Sub InitList()
+        listViewEmbodegados.Columns.Add("Etiqueta", 300)
+        listViewEmbodegados.Columns.Add("Precio", 300)
+        listViewEmbodegados.Columns.Add("Cantidad", 300)
+    End Sub
+
+    Private Sub FillProductsList()
+        Dim articulos = Me.mdb.GetCollection(Of Articulo)("articulo")
+        Dim res = articulos.FindAll
+
+        For Each larticulo As Articulo In res
+            'MessageBox.Show(larticulo.etiqueta)
+            'listViewEmbodegados.
+            Dim lvi As ListViewItem = New ListViewItem(larticulo.etiqueta)
+            listViewEmbodegados.Items.Add(lvi)
+        Next larticulo
     End Sub
 
     Private Function esValidoEmbodegable()
@@ -48,31 +71,20 @@
     End Sub
 
     Private Sub GuardarArticulo()
-        Using db As LiteDB.LiteDatabase = New LiteDB.LiteDatabase("VendeMela.db")
-            'System.Console.WriteLine(db)
-            Dim isExistingArticle = Me.CheckIfEtiquetaExists()
-            If Not isExistingArticle Then
-                Dim articulos = db.GetCollection(Of Articulo)("articulo")
-                Dim r = articulos.FindAll
-                Dim articulo As Articulo = New Articulo With {
+        Dim isExistingArticle As Boolean = Me.CheckIfEtiquetaExists()
+        If Not isExistingArticle Then
+            Dim articulos = Me.mdb.GetCollection(Of Articulo)("articulo")
+            Dim articulo As Articulo = New Articulo With {
                     .id = Me.GetNextArticuloID(),
                     .cantidad = Me.cantidadTXT.Text,
                     .etiqueta = Me.etiquetaComercialTXT.Text,
                     .precio = Me.precioUnidadTXT.Text
                 }
-                articulos.Insert(articulo)
-                Me.CleanForm()
-            Else
-                MessageBox.Show(etiquetaComercialTXT.Text & "Articulo Existe.")
-            End If
-
-            'Dim res = articulos.FindAll
-            'System.Console.WriteLine(res)
-            'For Each larticulo As Articulo In res
-            'MessageBox.Show(larticulo.etiqueta)
-            'Next larticulo
-
-        End Using
+            articulos.Insert(articulo)
+            Me.CleanForm()
+        Else
+            MessageBox.Show(etiquetaComercialTXT.Text & "Articulo Existe.")
+        End If
     End Sub
 
     Private Sub CleanForm()
@@ -83,25 +95,20 @@
 
     Private Function GetNextArticuloID()
         Dim nextId As Integer
-        Using db As LiteDB.LiteDatabase = New LiteDB.LiteDatabase("VendeMela.db")
-            Dim articulos = db.GetCollection(Of Articulo)("articulo")
-            Dim r = articulos.FindAll
-            nextId = r.Count + 1
-        End Using
+        Dim articulos = Me.mdb.GetCollection(Of Articulo)("articulo")
+        Dim r = articulos.FindAll
+        nextId = r.Count + 1
         Return nextId
     End Function
 
     Private Function CheckIfEtiquetaExists()
         Dim etiquetaExists As Boolean = False
-        Using db As LiteDB.LiteDatabase = New LiteDB.LiteDatabase("VendeMela.db")
-            Dim articulos = db.GetCollection(Of Articulo)("articulo")
-            Dim query As LiteDB.Query
-            Dim result = articulos.FindOne(query.EQ("etiqueta", Me.etiquetaComercialTXT.Text))
-            System.Console.WriteLine(result)
-            If Not IsNothing(result) Then
-                etiquetaExists = True
-            End If
-        End Using
+        Dim articulos = Me.mdb.GetCollection(Of Articulo)("articulo")
+        Dim query As LiteDB.Query
+        Dim result = articulos.FindOne(query.EQ("etiqueta", Me.etiquetaComercialTXT.Text))
+        If Not IsNothing(result) Then
+            etiquetaExists = True
+        End If
         Return etiquetaExists
     End Function
 
