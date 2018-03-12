@@ -16,9 +16,10 @@
     End Sub
 
     Private Sub InitList()
-        'listViewEmbodegados.Columns.Add("Etiqueta", 300)
-        'listViewEmbodegados.Columns.Add("Precio", 300)
-        'listViewEmbodegados.Columns.Add("Cantidad", 300)
+        'ListView1.Columns.Add("Id")
+        'ListView1.Columns.Add("Etiqueta")
+        'ListView1.Columns.Add("Precio")
+        'ListView1.Columns.Add("Cantidad")
     End Sub
 
     Private Sub FillProductsList()
@@ -28,13 +29,9 @@
         'itemsListBox.Items.AddRange(res)
         'Dim arrLVItem(res.Count()) As ListViewItem
         For Each larticulo As Articulo In res
-            Dim lst As ListViewItem
-            'MessageBox.Show(larticulo.etiqueta)
-            'itemsListBox.Items.Add(larticulo.id & ":" & larticulo.etiqueta)
-            'Dim citem As ListViewItem = New ListViewItem()
-            'citem.
-            'itemListView.Items.Add()
+            ListBox1.Items.Add(larticulo.id & "# " & larticulo.etiqueta & " ¢" & larticulo.precio & " Unidades:" & larticulo.cantidad)
 
+            'ListView1.Items.
             'index = index + 1
         Next larticulo
     End Sub

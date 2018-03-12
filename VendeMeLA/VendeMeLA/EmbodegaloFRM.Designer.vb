@@ -30,7 +30,8 @@ Partial Class EmbodegaloFRM
         Me.etiquetaComercialTXT = New System.Windows.Forms.TextBox()
         Me.precioUnidadTXT = New System.Windows.Forms.TextBox()
         Me.cantidadTXT = New System.Windows.Forms.TextBox()
-        Me.ListView1 = New System.Windows.Forms.ListView()
+        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.SuspendLayout()
         '
         'showEmbodegarBTN
@@ -90,20 +91,22 @@ Partial Class EmbodegaloFRM
         Me.cantidadTXT.Size = New System.Drawing.Size(73, 20)
         Me.cantidadTXT.TabIndex = 6
         '
-        'ListView1
+        'ListBox1
         '
-        Me.ListView1.Location = New System.Drawing.Point(53, 123)
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(483, 188)
-        Me.ListView1.TabIndex = 7
-        Me.ListView1.UseCompatibleStateImageBehavior = False
+        Me.ListBox1.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.ItemHeight = 22
+        Me.ListBox1.Location = New System.Drawing.Point(47, 113)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(334, 180)
+        Me.ListBox1.TabIndex = 7
         '
         'EmbodegaloFRM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(599, 370)
-        Me.Controls.Add(Me.ListView1)
+        Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.cantidadTXT)
         Me.Controls.Add(Me.precioUnidadTXT)
         Me.Controls.Add(Me.etiquetaComercialTXT)
@@ -127,5 +130,6 @@ Partial Class EmbodegaloFRM
     Friend WithEvents precioUnidadTXT As TextBox
     Friend WithEvents cantidadTXT As TextBox
     Friend WithEvents listViewEmbodegados As ListView
-    Friend WithEvents ListView1 As ListView
+    Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
+    Friend WithEvents ListBox1 As ListBox
 End Class
