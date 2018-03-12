@@ -30,12 +30,12 @@ Partial Class EmbodegaloFRM
         Me.etiquetaComercialTXT = New System.Windows.Forms.TextBox()
         Me.precioUnidadTXT = New System.Windows.Forms.TextBox()
         Me.cantidadTXT = New System.Windows.Forms.TextBox()
-        Me.listViewEmbodegados = New System.Windows.Forms.ListView()
+        Me.ListView1 = New System.Windows.Forms.ListView()
         Me.SuspendLayout()
         '
         'showEmbodegarBTN
         '
-        Me.showEmbodegarBTN.Location = New System.Drawing.Point(26, 104)
+        Me.showEmbodegarBTN.Location = New System.Drawing.Point(110, 65)
         Me.showEmbodegarBTN.Name = "showEmbodegarBTN"
         Me.showEmbodegarBTN.Size = New System.Drawing.Size(149, 23)
         Me.showEmbodegarBTN.TabIndex = 0
@@ -63,7 +63,7 @@ Partial Class EmbodegaloFRM
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(23, 69)
+        Me.Label3.Location = New System.Drawing.Point(196, 42)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(52, 13)
         Me.Label3.TabIndex = 3
@@ -80,30 +80,30 @@ Partial Class EmbodegaloFRM
         '
         Me.precioUnidadTXT.Location = New System.Drawing.Point(137, 39)
         Me.precioUnidadTXT.Name = "precioUnidadTXT"
-        Me.precioUnidadTXT.Size = New System.Drawing.Size(181, 20)
+        Me.precioUnidadTXT.Size = New System.Drawing.Size(53, 20)
         Me.precioUnidadTXT.TabIndex = 5
         '
         'cantidadTXT
         '
-        Me.cantidadTXT.Location = New System.Drawing.Point(137, 66)
+        Me.cantidadTXT.Location = New System.Drawing.Point(245, 39)
         Me.cantidadTXT.Name = "cantidadTXT"
-        Me.cantidadTXT.Size = New System.Drawing.Size(100, 20)
+        Me.cantidadTXT.Size = New System.Drawing.Size(73, 20)
         Me.cantidadTXT.TabIndex = 6
         '
-        'listViewEmbodegados
+        'ListView1
         '
-        Me.listViewEmbodegados.Location = New System.Drawing.Point(54, 148)
-        Me.listViewEmbodegados.Name = "listViewEmbodegados"
-        Me.listViewEmbodegados.Size = New System.Drawing.Size(451, 104)
-        Me.listViewEmbodegados.TabIndex = 7
-        Me.listViewEmbodegados.UseCompatibleStateImageBehavior = False
+        Me.ListView1.Location = New System.Drawing.Point(53, 123)
+        Me.ListView1.Name = "ListView1"
+        Me.ListView1.Size = New System.Drawing.Size(483, 188)
+        Me.ListView1.TabIndex = 7
+        Me.ListView1.UseCompatibleStateImageBehavior = False
         '
         'EmbodegaloFRM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(561, 309)
-        Me.Controls.Add(Me.listViewEmbodegados)
+        Me.ClientSize = New System.Drawing.Size(599, 370)
+        Me.Controls.Add(Me.ListView1)
         Me.Controls.Add(Me.cantidadTXT)
         Me.Controls.Add(Me.precioUnidadTXT)
         Me.Controls.Add(Me.etiquetaComercialTXT)
@@ -127,4 +127,5 @@ Partial Class EmbodegaloFRM
     Friend WithEvents precioUnidadTXT As TextBox
     Friend WithEvents cantidadTXT As TextBox
     Friend WithEvents listViewEmbodegados As ListView
+    Friend WithEvents ListView1 As ListView
 End Class

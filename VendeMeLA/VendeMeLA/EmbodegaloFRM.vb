@@ -16,25 +16,27 @@
     End Sub
 
     Private Sub InitList()
-        listViewEmbodegados.Columns.Add("Etiqueta", 300)
-        listViewEmbodegados.Columns.Add("Precio", 300)
-        listViewEmbodegados.Columns.Add("Cantidad", 300)
+        'listViewEmbodegados.Columns.Add("Etiqueta", 300)
+        'listViewEmbodegados.Columns.Add("Precio", 300)
+        'listViewEmbodegados.Columns.Add("Cantidad", 300)
     End Sub
 
     Private Sub FillProductsList()
         Dim articulos = Me.mdb.GetCollection(Of Articulo)("articulo")
         Dim res = articulos.FindAll
         Dim index As Integer = 0
-        Dim arrLVItem(res.Count()) As ListViewItem
+        'itemsListBox.Items.AddRange(res)
+        'Dim arrLVItem(res.Count()) As ListViewItem
         For Each larticulo As Articulo In res
+            Dim lst As ListViewItem
             'MessageBox.Show(larticulo.etiqueta)
-            'listViewEmbodegados.
-            arrLVItem(index) = New ListViewItem(larticulo.etiqueta)
-            arrLVItem(index).SubItems.Add(larticulo.precio)
-            arrLVItem(index).SubItems.Add(larticulo.cantidad)
-            index = index + 1
+            'itemsListBox.Items.Add(larticulo.id & ":" & larticulo.etiqueta)
+            'Dim citem As ListViewItem = New ListViewItem()
+            'citem.
+            'itemListView.Items.Add()
+
+            'index = index + 1
         Next larticulo
-        listViewEmbodegados.Items.AddRange(arrLVItem)
     End Sub
 
     Private Function esValidoEmbodegable()
