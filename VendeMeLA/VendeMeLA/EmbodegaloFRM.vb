@@ -3,6 +3,8 @@
     Private Errors As New List(Of String)
     Private nuevo As Producto = New Producto
     Private mdb As LiteDB.LiteDatabase
+    Private EditId As String
+    Private ArticuloEditable As Articulo
 
     Public Sub New()
         ' This call is required by the designer.
@@ -11,15 +13,7 @@
         Using db As LiteDB.LiteDatabase = New LiteDB.LiteDatabase("VendeMela.db")
             Me.mdb = db
         End Using
-        Me.InitList()
         Me.FillProductsList()
-    End Sub
-
-    Private Sub InitList()
-        'ListView1.Columns.Add("Id")
-        'ListView1.Columns.Add("Etiqueta")
-        'ListView1.Columns.Add("Precio")
-        'ListView1.Columns.Add("Cantidad")
     End Sub
 
     Private Sub FillProductsList()
@@ -114,5 +108,25 @@
         End If
         Return etiquetaExists
     End Function
+
+    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
+        Dim val As String = ListBox1.SelectedItem.ToString()
+        Dim pieces As Array = val.Split("#")
+        Me.EditId = pieces(0)
+        Me.getEditArticulo()
+        Me.setArticuloForm()
+    End Sub
+
+    Private Sub getEditArticulo()
+        Dim articulos = Me.mdb.GetCollection(Of Articulo)("articulo")
+        Dim query As LiteDB.Query
+        'Me.ArticuloEditable = articulos.FindOne(query.EQ("id", Convert.ToInt32(Me.EditId)))
+        Me.ArticuloEditable = articulos.FindById(Convert.ToInt32(Me.EditId))
+
+    End Sub
+
+    Private Sub setArticuloForm()
+        MessageBox.Show(Me.ArticuloEditable.etiqueta)
+    End Sub
 
 End Class

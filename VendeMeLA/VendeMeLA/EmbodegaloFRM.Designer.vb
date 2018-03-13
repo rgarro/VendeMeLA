@@ -93,19 +93,19 @@ Partial Class EmbodegaloFRM
         '
         'ListBox1
         '
-        Me.ListBox1.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ListBox1.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 22
         Me.ListBox1.Location = New System.Drawing.Point(47, 113)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(334, 180)
+        Me.ListBox1.Size = New System.Drawing.Size(353, 180)
         Me.ListBox1.TabIndex = 7
         '
         'EmbodegaloFRM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(599, 370)
+        Me.ClientSize = New System.Drawing.Size(507, 342)
         Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.cantidadTXT)
         Me.Controls.Add(Me.precioUnidadTXT)
