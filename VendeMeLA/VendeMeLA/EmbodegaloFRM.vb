@@ -7,6 +7,9 @@
     Private ArticuloEditable As Articulo
     Private OriginalEtiqueta As String
     Private articulos
+    Private clickSound = New System.Media.SoundPlayer("C:\Users\rolando\Documents\UHispanoamericana\VendemelaE\VendeMeLA\VendeMeLA\VendeMeLA\VendemeloLib\wavs\potatoCruch.wav")
+    Private processSound = New System.Media.SoundPlayer("C:\Users\rolando\Documents\UHispanoamericana\VendemelaE\VendeMeLA\VendeMeLA\VendeMeLA\VendemeloLib\wavs\fryingChips.wav")
+    Private errorSound = New System.Media.SoundPlayer("C:\Users\rolando\Documents\UHispanoamericana\VendemelaE\VendeMeLA\VendeMeLA\VendeMeLA\VendemeloLib\wavs\errorSound.wav")
 
     Public Sub New()
         ' This call is required by the designer.
@@ -20,6 +23,7 @@
     End Sub
 
     Private Sub FillProductsList()
+        Me.processSound.Play()
         Dim res = Me.articulos.FindAll
         Dim index As Integer = 0
         For Each larticulo As Articulo In res
@@ -54,10 +58,12 @@
     End Sub
 
     Private Sub showEmbodegarBTN_Click(sender As Object, e As EventArgs) Handles showEmbodegarBTN.Click
+        Me.clickSound.Play()
         If (Me.esValidoEmbodegable()) Then
             Me.obtenerDatosProductoNuevo()
             Me.GuardarArticulo()
         Else
+            Me.errorSound.Play()
             Dim errorsStr As String = String.Join(Environment.NewLine, Me.Errors)
             MessageBox.Show(errorsStr)
             Me.Errors.Clear()
@@ -77,6 +83,7 @@
             actionLabel.Text = "El Articulo #" & articulo.id.ToString() & " - " & articulo.etiqueta & " ha sido Embodegado."
             Me.CleanForm()
         Else
+            Me.errorSound.Play()
             MessageBox.Show("Articulo " & etiquetaComercialTXT.Text & " Existe.")
         End If
     End Sub
@@ -112,6 +119,7 @@
     End Function
 
     Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
+        clickSound.Play()
         Dim val As String = ListBox1.SelectedItem.ToString()
         Dim pieces As Array = val.Split("#")
         Me.EditId = pieces(0)
@@ -157,6 +165,7 @@
     End Function
 
     Private Sub actualizarArticuloBTN_Click(sender As Object, e As EventArgs) Handles actualizarArticuloBTN.Click
+        Me.clickSound.Play()
         If (Me.esValidoEmbodegableActualizable()) Then
             Me.obtenerDatosProductoEditar()
             Me.ActualizarArticulo()
@@ -165,6 +174,7 @@
             Me.CleanEditForm()
             editArticuloBox.Hide()
         Else
+            Me.errorSound.Play()
             Dim errorsStr As String = String.Join(Environment.NewLine, Me.Errors)
             MessageBox.Show(errorsStr)
             Me.Errors.Clear()
@@ -198,4 +208,15 @@
         'End If
     End Sub
 
+    Private Sub borrarArticuloBTN_Click(sender As Object, e As EventArgs) Handles borrarArticuloBTN.Click
+        Dim siBorrar = MessageBox.Show("Remover " & Me.ArticuloEditable.etiqueta, "caption", MessageBoxButtons.OKCancel)
+        If siBorrar = DialogResult.OK Then
+            actionLabel.Text = "El Articulo #" & Me.ArticuloEditable.id.ToString() & " - " & Me.ArticuloEditable.etiqueta & "ha sido BORRADO."
+            Me.articulos.Delete(Me.ArticuloEditable.id)
+            ListBox1.Items.Clear()
+            Me.FillProductsList()
+            Me.CleanEditForm()
+            editArticuloBox.Hide()
+        End If
+    End Sub
 End Class
