@@ -74,9 +74,10 @@
                     .precio = Me.precioUnidadTXT.Text
                 }
             Me.articulos.Insert(articulo)
+            actionLabel.Text = "El Articulo #" & articulo.id.ToString() & " - " & articulo.etiqueta & " ha sido Embodegado."
             Me.CleanForm()
         Else
-            MessageBox.Show(etiquetaComercialTXT.Text & "Articulo Existe.")
+            MessageBox.Show("Articulo " & etiquetaComercialTXT.Text & " Existe.")
         End If
     End Sub
 
@@ -87,9 +88,16 @@
     End Sub
 
     Private Function GetNextArticuloID()
+        'Dim nextId As Integer
+        'Dim r = Me.articulos.FindAll
+        'nextId = r.Count() + 1
+        'Return nextId
         Dim nextId As Integer
-        Dim r = Me.articulos.FindAll
-        nextId = r.Count + 1
+        Using db As LiteDB.LiteDatabase = New LiteDB.LiteDatabase("VendeMela.db")
+            Dim articulos = db.GetCollection(Of Articulo)("articulo")
+            Dim r = articulos.FindAll
+            nextId = r.Count + 1
+        End Using
         Return nextId
     End Function
 
@@ -152,12 +160,21 @@
         If (Me.esValidoEmbodegableActualizable()) Then
             Me.obtenerDatosProductoEditar()
             Me.ActualizarArticulo()
-            MessageBox.Show("refrescar listbox aqui ...")
+            ListBox1.Items.Clear()
+            Me.FillProductsList()
+            Me.CleanEditForm()
+            editArticuloBox.Hide()
         Else
             Dim errorsStr As String = String.Join(Environment.NewLine, Me.Errors)
             MessageBox.Show(errorsStr)
             Me.Errors.Clear()
         End If
+    End Sub
+
+    Private Sub CleanEditForm()
+        Me.EcantidadTXT.Text = ""
+        Me.EetiquetaComercialTXT.Text = ""
+        Me.EprecioUnidadTXT.Text = ""
     End Sub
 
     Private Function CheckIfEtiquetaExistsTwice(etiqueta As String)
@@ -174,6 +191,7 @@
         'Dim isExistingArticle As Boolean = Me.CheckIfEtiquetaExistsTwice(Me.etiquetaComercialTXT.Text)
         'If Not isExistingArticle Then
         Me.articulos.Update(Me.ArticuloEditable)
+        actionLabel.Text = "El Articulo #" & Me.ArticuloEditable.id.ToString() & " - " & Me.ArticuloEditable.etiqueta & " ha sido Actualizado."
         'Me.CleanForm()
         'Else
         'MessageBox.Show(etiquetaComercialTXT.Text & "Articulo Existe.")

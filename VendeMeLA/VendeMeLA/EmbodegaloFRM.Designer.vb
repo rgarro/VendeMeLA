@@ -33,14 +33,15 @@ Partial Class EmbodegaloFRM
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.editArticuloBox = New System.Windows.Forms.GroupBox()
+        Me.borrarArticuloBTN = New System.Windows.Forms.Button()
+        Me.actualizarArticuloBTN = New System.Windows.Forms.Button()
+        Me.EcantidadTXT = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.EprecioUnidadTXT = New System.Windows.Forms.TextBox()
         Me.EetiquetaComercialTXT = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.EprecioUnidadTXT = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.EcantidadTXT = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.actualizarArticuloBTN = New System.Windows.Forms.Button()
-        Me.borrarArticuloBTN = New System.Windows.Forms.Button()
+        Me.actionLabel = New System.Windows.Forms.Label()
         Me.editArticuloBox.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -128,6 +129,49 @@ Partial Class EmbodegaloFRM
         Me.editArticuloBox.Text = "Actualizar Articulo"
         Me.editArticuloBox.Visible = False
         '
+        'borrarArticuloBTN
+        '
+        Me.borrarArticuloBTN.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.borrarArticuloBTN.ForeColor = System.Drawing.Color.Red
+        Me.borrarArticuloBTN.Location = New System.Drawing.Point(127, 135)
+        Me.borrarArticuloBTN.Name = "borrarArticuloBTN"
+        Me.borrarArticuloBTN.Size = New System.Drawing.Size(75, 23)
+        Me.borrarArticuloBTN.TabIndex = 10
+        Me.borrarArticuloBTN.Text = "Borrar"
+        Me.borrarArticuloBTN.UseVisualStyleBackColor = True
+        '
+        'actualizarArticuloBTN
+        '
+        Me.actualizarArticuloBTN.Location = New System.Drawing.Point(24, 135)
+        Me.actualizarArticuloBTN.Name = "actualizarArticuloBTN"
+        Me.actualizarArticuloBTN.Size = New System.Drawing.Size(75, 23)
+        Me.actualizarArticuloBTN.TabIndex = 9
+        Me.actualizarArticuloBTN.Text = "Actualizar"
+        Me.actualizarArticuloBTN.UseVisualStyleBackColor = True
+        '
+        'EcantidadTXT
+        '
+        Me.EcantidadTXT.Location = New System.Drawing.Point(114, 96)
+        Me.EcantidadTXT.Name = "EcantidadTXT"
+        Me.EcantidadTXT.Size = New System.Drawing.Size(73, 20)
+        Me.EcantidadTXT.TabIndex = 8
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(21, 68)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(74, 13)
+        Me.Label4.TabIndex = 7
+        Me.Label4.Text = "Precio Unidad"
+        '
+        'EprecioUnidadTXT
+        '
+        Me.EprecioUnidadTXT.Location = New System.Drawing.Point(114, 61)
+        Me.EprecioUnidadTXT.Name = "EprecioUnidadTXT"
+        Me.EprecioUnidadTXT.Size = New System.Drawing.Size(53, 20)
+        Me.EprecioUnidadTXT.TabIndex = 6
+        '
         'EetiquetaComercialTXT
         '
         Me.EetiquetaComercialTXT.Location = New System.Drawing.Point(24, 29)
@@ -151,29 +195,6 @@ Partial Class EmbodegaloFRM
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Agregar Articulo"
         '
-        'EprecioUnidadTXT
-        '
-        Me.EprecioUnidadTXT.Location = New System.Drawing.Point(114, 61)
-        Me.EprecioUnidadTXT.Name = "EprecioUnidadTXT"
-        Me.EprecioUnidadTXT.Size = New System.Drawing.Size(53, 20)
-        Me.EprecioUnidadTXT.TabIndex = 6
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(21, 68)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(74, 13)
-        Me.Label4.TabIndex = 7
-        Me.Label4.Text = "Precio Unidad"
-        '
-        'EcantidadTXT
-        '
-        Me.EcantidadTXT.Location = New System.Drawing.Point(114, 96)
-        Me.EcantidadTXT.Name = "EcantidadTXT"
-        Me.EcantidadTXT.Size = New System.Drawing.Size(73, 20)
-        Me.EcantidadTXT.TabIndex = 8
-        '
         'Label5
         '
         Me.Label5.AutoSize = True
@@ -183,31 +204,22 @@ Partial Class EmbodegaloFRM
         Me.Label5.TabIndex = 7
         Me.Label5.Text = "Cantidad "
         '
-        'actualizarArticuloBTN
+        'actionLabel
         '
-        Me.actualizarArticuloBTN.Location = New System.Drawing.Point(24, 135)
-        Me.actualizarArticuloBTN.Name = "actualizarArticuloBTN"
-        Me.actualizarArticuloBTN.Size = New System.Drawing.Size(75, 23)
-        Me.actualizarArticuloBTN.TabIndex = 9
-        Me.actualizarArticuloBTN.Text = "Actualizar"
-        Me.actualizarArticuloBTN.UseVisualStyleBackColor = True
-        '
-        'borrarArticuloBTN
-        '
-        Me.borrarArticuloBTN.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.borrarArticuloBTN.ForeColor = System.Drawing.Color.Red
-        Me.borrarArticuloBTN.Location = New System.Drawing.Point(127, 135)
-        Me.borrarArticuloBTN.Name = "borrarArticuloBTN"
-        Me.borrarArticuloBTN.Size = New System.Drawing.Size(75, 23)
-        Me.borrarArticuloBTN.TabIndex = 10
-        Me.borrarArticuloBTN.Text = "Borrar"
-        Me.borrarArticuloBTN.UseVisualStyleBackColor = True
+        Me.actionLabel.AutoSize = True
+        Me.actionLabel.Font = New System.Drawing.Font("BankGothic Md BT", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.actionLabel.ForeColor = System.Drawing.Color.DarkGreen
+        Me.actionLabel.Location = New System.Drawing.Point(37, 334)
+        Me.actionLabel.Name = "actionLabel"
+        Me.actionLabel.Size = New System.Drawing.Size(0, 14)
+        Me.actionLabel.TabIndex = 10
         '
         'EmbodegaloFRM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(648, 359)
+        Me.Controls.Add(Me.actionLabel)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.editArticuloBox)
         Me.Controls.Add(Me.ListBox1)
@@ -219,6 +231,7 @@ Partial Class EmbodegaloFRM
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -241,4 +254,5 @@ Partial Class EmbodegaloFRM
     Friend WithEvents Label5 As Label
     Friend WithEvents borrarArticuloBTN As Button
     Friend WithEvents actualizarArticuloBTN As Button
+    Friend WithEvents actionLabel As Label
 End Class
