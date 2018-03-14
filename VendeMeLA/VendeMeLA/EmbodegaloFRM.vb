@@ -5,6 +5,7 @@
     Private mdb As LiteDB.LiteDatabase
     Private EditId As String
     Private ArticuloEditable As Articulo
+    Private OriginalEtiqueta As String
     Private articulos
 
     Public Sub New()
@@ -21,13 +22,8 @@
     Private Sub FillProductsList()
         Dim res = Me.articulos.FindAll
         Dim index As Integer = 0
-        'itemsListBox.Items.AddRange(res)
-        'Dim arrLVItem(res.Count()) As ListViewItem
         For Each larticulo As Articulo In res
             ListBox1.Items.Add(larticulo.id & "# " & larticulo.etiqueta & " ¢" & larticulo.precio & " Unidades:" & larticulo.cantidad)
-
-            'ListView1.Items.
-            'index = index + 1
         Next larticulo
     End Sub
 
@@ -39,7 +35,7 @@
         End If
         'Precio del producto
         If (Not IsNumeric(precioUnidadTXT.Text)) Then
-            Me.Errors.Add("El Precion es requerido y debe ser un numero")
+            Me.Errors.Add("El Precio es requerido y debe ser un numero")
         End If
         'Cantidad de producto
         If (Not IsNumeric(cantidadTXT.Text)) Then
@@ -69,7 +65,7 @@
     End Sub
 
     Private Sub GuardarArticulo()
-        Dim isExistingArticle As Boolean = Me.CheckIfEtiquetaExists()
+        Dim isExistingArticle As Boolean = Me.CheckIfEtiquetaExists(Me.etiquetaComercialTXT.Text)
         If Not isExistingArticle Then
             Dim articulo As Articulo = New Articulo With {
                     .id = Me.GetNextArticuloID(),
@@ -97,10 +93,10 @@
         Return nextId
     End Function
 
-    Private Function CheckIfEtiquetaExists()
+    Private Function CheckIfEtiquetaExists(etiqueta As String)
         Dim etiquetaExists As Boolean = False
         Dim query As LiteDB.Query
-        Dim result = Me.articulos.FindOne(query.EQ("etiqueta", Me.etiquetaComercialTXT.Text))
+        Dim result = Me.articulos.FindOne(query.EQ("etiqueta", etiqueta))
         If Not IsNothing(result) Then
             etiquetaExists = True
         End If
@@ -120,10 +116,68 @@
     End Sub
 
     Private Sub setArticuloForm()
-        'MessageBox.Show(Me.ArticuloEditable.etiqueta)
-        'Debug.Print(Me.ArticuloEditable.GetHashCode)
         editArticuloBox.Show()
         EetiquetaComercialTXT.Text = Me.ArticuloEditable.etiqueta
+        EcantidadTXT.Text = Me.ArticuloEditable.cantidad
+        EprecioUnidadTXT.Text = Me.ArticuloEditable.precio
+    End Sub
+
+    Private Sub obtenerDatosProductoEditar()
+        Me.ArticuloEditable.etiqueta = EetiquetaComercialTXT.Text
+        Me.ArticuloEditable.cantidad = EcantidadTXT.Text
+        Me.ArticuloEditable.precio = EprecioUnidadTXT.Text
+    End Sub
+
+    Private Function esValidoEmbodegableActualizable()
+        Dim isValid As Boolean = True
+        'Etiqueta del producto
+        If (EetiquetaComercialTXT.Text.Length < 1) Then
+            Me.Errors.Add("La Etiqueta es requerida")
+        End If
+        'Precio del producto
+        If (Not IsNumeric(EprecioUnidadTXT.Text)) Then
+            Me.Errors.Add("El Precio es requerido y debe ser un numero")
+        End If
+        'Cantidad de producto
+        If (Not IsNumeric(EcantidadTXT.Text)) Then
+            Me.Errors.Add("La Cantidad es requerida y debe ser numerica")
+        End If
+        If Errors.Count > 0 Then
+            isValid = False
+        End If
+        Return isValid
+    End Function
+
+    Private Sub actualizarArticuloBTN_Click(sender As Object, e As EventArgs) Handles actualizarArticuloBTN.Click
+        If (Me.esValidoEmbodegableActualizable()) Then
+            Me.obtenerDatosProductoEditar()
+            Me.ActualizarArticulo()
+            MessageBox.Show("refrescar listbox aqui ...")
+        Else
+            Dim errorsStr As String = String.Join(Environment.NewLine, Me.Errors)
+            MessageBox.Show(errorsStr)
+            Me.Errors.Clear()
+        End If
+    End Sub
+
+    Private Function CheckIfEtiquetaExistsTwice(etiqueta As String)
+        Dim etiquetaExists As Boolean = False
+        Dim query As LiteDB.Query
+        Dim result = Me.articulos.FindOne(query.EQ("etiqueta", etiqueta))
+        If Not IsNothing(result) Then
+            etiquetaExists = True
+        End If
+        Return etiquetaExists
+    End Function
+
+    Private Sub ActualizarArticulo()
+        'Dim isExistingArticle As Boolean = Me.CheckIfEtiquetaExistsTwice(Me.etiquetaComercialTXT.Text)
+        'If Not isExistingArticle Then
+        Me.articulos.Update(Me.ArticuloEditable)
+        'Me.CleanForm()
+        'Else
+        'MessageBox.Show(etiquetaComercialTXT.Text & "Articulo Existe.")
+        'End If
     End Sub
 
 End Class
