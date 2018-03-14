@@ -5,6 +5,7 @@
     Private mdb As LiteDB.LiteDatabase
     Private EditId As String
     Private ArticuloEditable As Articulo
+    Private articulos
 
     Public Sub New()
         ' This call is required by the designer.
@@ -13,12 +14,12 @@
         Using db As LiteDB.LiteDatabase = New LiteDB.LiteDatabase("VendeMela.db")
             Me.mdb = db
         End Using
+        Me.articulos = Me.mdb.GetCollection(Of Articulo)("articulo")
         Me.FillProductsList()
     End Sub
 
     Private Sub FillProductsList()
-        Dim articulos = Me.mdb.GetCollection(Of Articulo)("articulo")
-        Dim res = articulos.FindAll
+        Dim res = Me.articulos.FindAll
         Dim index As Integer = 0
         'itemsListBox.Items.AddRange(res)
         'Dim arrLVItem(res.Count()) As ListViewItem
@@ -70,14 +71,13 @@
     Private Sub GuardarArticulo()
         Dim isExistingArticle As Boolean = Me.CheckIfEtiquetaExists()
         If Not isExistingArticle Then
-            Dim articulos = Me.mdb.GetCollection(Of Articulo)("articulo")
             Dim articulo As Articulo = New Articulo With {
                     .id = Me.GetNextArticuloID(),
                     .cantidad = Me.cantidadTXT.Text,
                     .etiqueta = Me.etiquetaComercialTXT.Text,
                     .precio = Me.precioUnidadTXT.Text
                 }
-            articulos.Insert(articulo)
+            Me.articulos.Insert(articulo)
             Me.CleanForm()
         Else
             MessageBox.Show(etiquetaComercialTXT.Text & "Articulo Existe.")
@@ -92,17 +92,15 @@
 
     Private Function GetNextArticuloID()
         Dim nextId As Integer
-        Dim articulos = Me.mdb.GetCollection(Of Articulo)("articulo")
-        Dim r = articulos.FindAll
+        Dim r = Me.articulos.FindAll
         nextId = r.Count + 1
         Return nextId
     End Function
 
     Private Function CheckIfEtiquetaExists()
         Dim etiquetaExists As Boolean = False
-        Dim articulos = Me.mdb.GetCollection(Of Articulo)("articulo")
         Dim query As LiteDB.Query
-        Dim result = articulos.FindOne(query.EQ("etiqueta", Me.etiquetaComercialTXT.Text))
+        Dim result = Me.articulos.FindOne(query.EQ("etiqueta", Me.etiquetaComercialTXT.Text))
         If Not IsNothing(result) Then
             etiquetaExists = True
         End If
@@ -118,15 +116,14 @@
     End Sub
 
     Private Sub getEditArticulo()
-        Dim articulos = Me.mdb.GetCollection(Of Articulo)("articulo")
-        Dim query As LiteDB.Query
-        'Me.ArticuloEditable = articulos.FindOne(query.EQ("id", Convert.ToInt32(Me.EditId)))
-        Me.ArticuloEditable = articulos.FindById(Convert.ToInt32(Me.EditId))
-
+        Me.ArticuloEditable = Me.articulos.FindById(Convert.ToInt32(Me.EditId))
     End Sub
 
     Private Sub setArticuloForm()
-        MessageBox.Show(Me.ArticuloEditable.etiqueta)
+        'MessageBox.Show(Me.ArticuloEditable.etiqueta)
+        'Debug.Print(Me.ArticuloEditable.GetHashCode)
+        editArticuloBox.Show()
+        EetiquetaComercialTXT.Text = Me.ArticuloEditable.etiqueta
     End Sub
 
 End Class

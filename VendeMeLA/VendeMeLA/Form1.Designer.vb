@@ -33,16 +33,16 @@ Partial Class Form1
         '
         Me.PictureBox1.BackColor = System.Drawing.SystemColors.HotTrack
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(41, 34)
+        Me.PictureBox1.Location = New System.Drawing.Point(13, 13)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(479, 261)
+        Me.PictureBox1.Size = New System.Drawing.Size(545, 269)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
         'showVendeFormBtn
         '
         Me.showVendeFormBtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.showVendeFormBtn.Location = New System.Drawing.Point(41, 344)
+        Me.showVendeFormBtn.Location = New System.Drawing.Point(47, 303)
         Me.showVendeFormBtn.Name = "showVendeFormBtn"
         Me.showVendeFormBtn.Size = New System.Drawing.Size(156, 42)
         Me.showVendeFormBtn.TabIndex = 1
@@ -52,7 +52,7 @@ Partial Class Form1
         'showEmbodegaFormBtn
         '
         Me.showEmbodegaFormBtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.showEmbodegaFormBtn.Location = New System.Drawing.Point(364, 344)
+        Me.showEmbodegaFormBtn.Location = New System.Drawing.Point(356, 303)
         Me.showEmbodegaFormBtn.Name = "showEmbodegaFormBtn"
         Me.showEmbodegaFormBtn.Size = New System.Drawing.Size(156, 42)
         Me.showEmbodegaFormBtn.TabIndex = 2
@@ -63,7 +63,7 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(569, 412)
+        Me.ClientSize = New System.Drawing.Size(569, 357)
         Me.Controls.Add(Me.showEmbodegaFormBtn)
         Me.Controls.Add(Me.showVendeFormBtn)
         Me.Controls.Add(Me.PictureBox1)
