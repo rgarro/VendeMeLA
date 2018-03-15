@@ -1,4 +1,7 @@
-﻿Public Class Form1
+﻿
+Imports VendeMeLA
+
+Public Class Form1
 
     Private clickSound = New System.Media.SoundPlayer("C:\Users\rolando\Documents\UHispanoamericana\VendemelaE\VendeMeLA\VendeMeLA\VendeMeLA\VendemeloLib\wavs\potatoCruch.wav")
 
