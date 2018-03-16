@@ -6,10 +6,9 @@
     Private EditId As String
     Private ArticuloEditable As Articulo
     Private OriginalEtiqueta As String
-    Private articulos
-    Private clickSound = New System.Media.SoundPlayer("C:\Users\rolando\Documents\UHispanoamericana\VendemelaE\VendeMeLA\VendeMeLA\VendeMeLA\VendemeloLib\wavs\potatoCruch.wav")
-    Private processSound = New System.Media.SoundPlayer("C:\Users\rolando\Documents\UHispanoamericana\VendemelaE\VendeMeLA\VendeMeLA\VendeMeLA\VendemeloLib\wavs\fryingChips.wav")
-    Private errorSound = New System.Media.SoundPlayer("C:\Users\rolando\Documents\UHispanoamericana\VendemelaE\VendeMeLA\VendeMeLA\VendeMeLA\VendemeloLib\wavs\errorSound.wav")
+    'Private articulos
+    Private sounds As VMLSounds = New VMLSounds()
+    Private AM As ArticulosManager = New ArticulosManager()
 
     Public Sub New()
         ' This call is required by the designer.
@@ -18,13 +17,13 @@
         Using db As LiteDB.LiteDatabase = New LiteDB.LiteDatabase("VendeMela.db")
             Me.mdb = db
         End Using
-        Me.articulos = Me.mdb.GetCollection(Of Articulo)("articulo")
+        'Me.articulos = Me.mdb.GetCollection(Of Articulo)("articulo")
         Me.FillProductsList()
     End Sub
 
     Private Sub FillProductsList()
-        Me.processSound.Play()
-        Dim res = Me.articulos.FindAll
+        Me.sounds.processSound.Play()
+        Dim res = Me.AM.articulos.FindAll
         Dim index As Integer = 0
         For Each larticulo As Articulo In res
             ListBox1.Items.Add(larticulo.id & "# " & larticulo.etiqueta & " ¢" & larticulo.precio & " Unidades:" & larticulo.cantidad)
@@ -58,12 +57,12 @@
     End Sub
 
     Private Sub showEmbodegarBTN_Click(sender As Object, e As EventArgs) Handles showEmbodegarBTN.Click
-        Me.clickSound.Play()
+        Me.sounds.clickSound.Play()
         If (Me.esValidoEmbodegable()) Then
             Me.obtenerDatosProductoNuevo()
             Me.GuardarArticulo()
         Else
-            Me.errorSound.Play()
+            Me.sounds.errorSound.Play()
             Dim errorsStr As String = String.Join(Environment.NewLine, Me.Errors)
             MessageBox.Show(errorsStr)
             Me.Errors.Clear()
@@ -71,19 +70,19 @@
     End Sub
 
     Private Sub GuardarArticulo()
-        Dim isExistingArticle As Boolean = Me.CheckIfEtiquetaExists(Me.etiquetaComercialTXT.Text)
+        Dim isExistingArticle As Boolean = Me.AM.CheckIfEtiquetaExists(Me.etiquetaComercialTXT.Text)
         If Not isExistingArticle Then
             Dim articulo As Articulo = New Articulo With {
-                    .id = Me.GetNextArticuloID(),
+                    .id = Me.AM.GetNextArticuloID(),
                     .cantidad = Me.cantidadTXT.Text,
                     .etiqueta = Me.etiquetaComercialTXT.Text,
                     .precio = Me.precioUnidadTXT.Text
                 }
-            Me.articulos.Insert(articulo)
+            Me.AM.articulos.Insert(articulo)
             actionLabel.Text = "El Articulo #" & articulo.id.ToString() & " - " & articulo.etiqueta & " ha sido Embodegado."
             Me.CleanForm()
         Else
-            Me.errorSound.Play()
+            Me.sounds.errorSound.Play()
             MessageBox.Show("Articulo " & etiquetaComercialTXT.Text & " Existe.")
         End If
     End Sub
@@ -94,32 +93,24 @@
         Me.precioUnidadTXT.Text = ""
     End Sub
 
-    Private Function GetNextArticuloID()
-        'Dim nextId As Integer
-        'Dim r = Me.articulos.FindAll
-        'nextId = r.Count() + 1
-        'Return nextId
-        Dim nextId As Integer
-        Using db As LiteDB.LiteDatabase = New LiteDB.LiteDatabase("VendeMela.db")
-            Dim articulos = db.GetCollection(Of Articulo)("articulo")
-            Dim r = articulos.FindAll
-            nextId = r.Count + 1
-        End Using
-        Return nextId
-    End Function
+    ' Private Function GetNextArticuloID()
+    '  Dim nextId As Integer
+    ' Dim r = Me.AM.articulos.FindAll
+    '     nextId = r.Count() + 1
+    'Return nextId
+    'Dim nextId As Integer
+    'Using db As LiteDB.LiteDatabase = New LiteDB.LiteDatabase("VendeMela.db")
+    ' Dim articulos = db.GetCollection(Of Articulo)("articulo")
+    ' Dim r = articulos.FindAll
+    ' nextId = r.Count + 1
+    ' End Using
+    '   Return nextId
+    '  End Function
 
-    Private Function CheckIfEtiquetaExists(etiqueta As String)
-        Dim etiquetaExists As Boolean = False
-        Dim query As LiteDB.Query
-        Dim result = Me.articulos.FindOne(query.EQ("etiqueta", etiqueta))
-        If Not IsNothing(result) Then
-            etiquetaExists = True
-        End If
-        Return etiquetaExists
-    End Function
+
 
     Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
-        clickSound.Play()
+        Me.sounds.clickSound.Play()
         Dim val As String = ListBox1.SelectedItem.ToString()
         Dim pieces As Array = val.Split("#")
         Me.EditId = pieces(0)
@@ -128,7 +119,7 @@
     End Sub
 
     Private Sub getEditArticulo()
-        Me.ArticuloEditable = Me.articulos.FindById(Convert.ToInt32(Me.EditId))
+        Me.ArticuloEditable = Me.AM.articulos.FindById(Convert.ToInt32(Me.EditId))
     End Sub
 
     Private Sub setArticuloForm()
@@ -165,7 +156,7 @@
     End Function
 
     Private Sub actualizarArticuloBTN_Click(sender As Object, e As EventArgs) Handles actualizarArticuloBTN.Click
-        Me.clickSound.Play()
+        Me.sounds.clickSound.Play()
         If (Me.esValidoEmbodegableActualizable()) Then
             Me.obtenerDatosProductoEditar()
             Me.ActualizarArticulo()
@@ -174,7 +165,7 @@
             Me.CleanEditForm()
             editArticuloBox.Hide()
         Else
-            Me.errorSound.Play()
+            Me.sounds.errorSound.Play()
             Dim errorsStr As String = String.Join(Environment.NewLine, Me.Errors)
             MessageBox.Show(errorsStr)
             Me.Errors.Clear()
@@ -190,7 +181,7 @@
     Private Function CheckIfEtiquetaExistsTwice(etiqueta As String)
         Dim etiquetaExists As Boolean = False
         Dim query As LiteDB.Query
-        Dim result = Me.articulos.FindOne(query.EQ("etiqueta", etiqueta))
+        Dim result = Me.AM.articulos.FindOne(query.EQ("etiqueta", etiqueta))
         If Not IsNothing(result) Then
             etiquetaExists = True
         End If
@@ -200,7 +191,7 @@
     Private Sub ActualizarArticulo()
         'Dim isExistingArticle As Boolean = Me.CheckIfEtiquetaExistsTwice(Me.etiquetaComercialTXT.Text)
         'If Not isExistingArticle Then
-        Me.articulos.Update(Me.ArticuloEditable)
+        Me.AM.articulos.Update(Me.ArticuloEditable)
         actionLabel.Text = "El Articulo #" & Me.ArticuloEditable.id.ToString() & " - " & Me.ArticuloEditable.etiqueta & " ha sido Actualizado."
         'Me.CleanForm()
         'Else
@@ -212,7 +203,7 @@
         Dim siBorrar = MessageBox.Show("Remover " & Me.ArticuloEditable.etiqueta, "caption", MessageBoxButtons.OKCancel)
         If siBorrar = DialogResult.OK Then
             actionLabel.Text = "El Articulo #" & Me.ArticuloEditable.id.ToString() & " - " & Me.ArticuloEditable.etiqueta & "ha sido BORRADO."
-            Me.articulos.Delete(Me.ArticuloEditable.id)
+            Me.AM.articulos.Delete(Me.ArticuloEditable.id)
             ListBox1.Items.Clear()
             Me.FillProductsList()
             Me.CleanEditForm()
