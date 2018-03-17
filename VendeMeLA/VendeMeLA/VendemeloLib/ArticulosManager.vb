@@ -19,7 +19,10 @@
     End Function
 
     Public Function todosConExistencias()
-
+        Dim query As LiteDB.Query
+        Dim res = Me.articulos.Find(query.And(query.All("etiqueta", query.Ascending), query.GTE("cantidad", 1)))
+        'Dim r = From art In res Order By art.etiqueta
+        Return res
     End Function
 
 End Class
