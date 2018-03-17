@@ -112,7 +112,6 @@
     <Compile Include="VendemeloLib\ArticulosManager.vb" />
     <Compile Include="VendemeloLib\DBObject.vb" />
     <Compile Include="VendemeloLib\Pocos\Articulo.vb" />
-    <Compile Include="VendemeloLib\Producto.vb" />
     <Compile Include="VendemeloLib\VMLSounds.vb" />
   </ItemGroup>
   <ItemGroup>

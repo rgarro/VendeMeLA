@@ -8,20 +8,6 @@
         Me.articulos = Me.db.db.GetCollection(Of Articulo)("articulo")
     End Sub
 
-    Public Function GetNextArticuloID()
-        Dim nextId As Integer
-        Dim r = Me.articulos.FindAll
-        nextId = r.Count() + 1
-        'Return nextId
-        'Dim nextId As Integer
-        'Using db As LiteDB.LiteDatabase = New LiteDB.LiteDatabase("VendeMela.db")
-        ' Dim articulos = db.GetCollection(Of Articulo)("articulo")
-        ' Dim r = articulos.FindAll
-        ' nextId = r.Count + 1
-        ' End Using
-        Return nextId
-    End Function
-
     Public Function CheckIfEtiquetaExists(etiqueta As String)
         Dim etiquetaExists As Boolean = False
         Dim query As LiteDB.Query
@@ -30,6 +16,10 @@
             etiquetaExists = True
         End If
         Return etiquetaExists
+    End Function
+
+    Public Function todosConExistencias()
+
     End Function
 
 End Class
