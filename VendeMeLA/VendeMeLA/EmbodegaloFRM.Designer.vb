@@ -42,6 +42,7 @@ Partial Class EmbodegaloFRM
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.actionLabel = New System.Windows.Forms.Label()
+        Me.errorsLabel = New System.Windows.Forms.Label()
         Me.editArticuloBox.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -214,11 +215,22 @@ Partial Class EmbodegaloFRM
         Me.actionLabel.Size = New System.Drawing.Size(0, 14)
         Me.actionLabel.TabIndex = 10
         '
+        'errorsLabel
+        '
+        Me.errorsLabel.AutoSize = True
+        Me.errorsLabel.Font = New System.Drawing.Font("PanRoman", 8.249999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.errorsLabel.ForeColor = System.Drawing.Color.Red
+        Me.errorsLabel.Location = New System.Drawing.Point(19, 139)
+        Me.errorsLabel.Name = "errorsLabel"
+        Me.errorsLabel.Size = New System.Drawing.Size(0, 11)
+        Me.errorsLabel.TabIndex = 11
+        '
         'EmbodegaloFRM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(648, 359)
+        Me.Controls.Add(Me.errorsLabel)
         Me.Controls.Add(Me.actionLabel)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.editArticuloBox)
@@ -255,4 +267,5 @@ Partial Class EmbodegaloFRM
     Friend WithEvents borrarArticuloBTN As Button
     Friend WithEvents actualizarArticuloBTN As Button
     Friend WithEvents actionLabel As Label
+    Friend WithEvents errorsLabel As Label
 End Class

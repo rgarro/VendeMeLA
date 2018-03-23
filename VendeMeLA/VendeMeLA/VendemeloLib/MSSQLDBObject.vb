@@ -10,7 +10,7 @@ Public Class MSSQLDBObject
     End Sub
 
     Private Sub initDBConn()
-        Me.conn = New SqlConnection("Initial Catalog=vendemela;" & "Data Source=localhost;Integrated Security=SSPI;")
+        Me.conn = New SqlConnection("Initial Catalog=vendemela;" & "Data Source=localhost;Integrated Security=SSPI;MultipleActiveResultSets=True;")
     End Sub
 
     'fucking destroy ...

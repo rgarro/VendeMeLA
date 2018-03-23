@@ -6,6 +6,7 @@
     Private OriginalEtiqueta As String
     Private sounds As VMLSounds = New VMLSounds()
     Private AM As ArticulosManager = New ArticulosManager()
+    Private sqlAM As ArticulosManagerSQL = New ArticulosManagerSQL()
 
     Public Sub New()
         ' This call is required by the designer.
@@ -16,7 +17,8 @@
     Private Sub FillProductsList()
         Me.sounds.processSound.Play()
         ListBox1.Items.Clear()
-        Dim res = Me.AM.articulos.FindAll
+        'Dim res = Me.AM.articulos.FindAll
+        Dim res As List(Of Articulo) = Me.sqlAM.listAll()
         For Each larticulo As Articulo In res
             ListBox1.Items.Add(larticulo.id & "# " & larticulo.etiqueta & " ¢" & larticulo.precio & " Unidades:" & larticulo.cantidad)
         Next larticulo
@@ -56,19 +58,20 @@
     End Sub
 
     Private Sub GuardarArticulo()
-        Dim isExistingArticle As Boolean = Me.AM.CheckIfEtiquetaExists(Me.etiquetaComercialTXT.Text)
+        Dim isExistingArticle As Boolean = Me.sqlAM.CheckIfEtiquetaExists(Me.etiquetaComercialTXT.Text)
         If Not isExistingArticle Then
             Dim articulo As Articulo = New Articulo With {
                 .cantidad = Me.cantidadTXT.Text,
                     .etiqueta = Me.etiquetaComercialTXT.Text,
                     .precio = Me.precioUnidadTXT.Text
                 }
-            Me.AM.articulos.Insert(articulo)
+            Me.sqlAM.Insert(articulo)
             actionLabel.Text = "El Articulo #" & articulo.id.ToString() & " - " & articulo.etiqueta & " ha sido Embodegado."
             Me.CleanForm()
         Else
             Me.sounds.errorSound.Play()
-            MessageBox.Show("Articulo " & etiquetaComercialTXT.Text & " Existe.")
+            'MessageBox.Show("Articulo " & etiquetaComercialTXT.Text & " Existe.")
+            errorsLabel.Text = "Articulo " & etiquetaComercialTXT.Text & " Existe."
         End If
     End Sub
 

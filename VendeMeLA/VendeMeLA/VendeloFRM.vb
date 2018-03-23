@@ -3,7 +3,7 @@
 Public Class VendeloFRM
 
     Private sounds As VMLSounds = New VMLSounds()
-    Private AM As ArticulosManager = New ArticulosManager()
+    Private sqlAM As ArticulosManagerSQL = New ArticulosManagerSQL()
 
     Public Sub New()
         ' This call is required by the designer.
@@ -13,7 +13,7 @@ Public Class VendeloFRM
 
     Private Sub llenarProductosDisponibles()
         Me.sounds.processSound.Play()
-        Dim res = Me.AM.todosConExistencias()
+        Dim res = Me.sqlAM.todosConExistencias()
         For Each larticulo As Articulo In res
             articulosList.Items.Add(larticulo.id & "# " & larticulo.etiqueta & " ¢" & larticulo.precio & " Unidades:" & larticulo.cantidad)
         Next larticulo
