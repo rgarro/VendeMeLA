@@ -121,9 +121,11 @@
     </Compile>
     <Compile Include="VendemeloLib\ArticulosManager.vb" />
     <Compile Include="VendemeloLib\ArticulosManagerSQL.vb" />
+    <Compile Include="VendemeloLib\ClientesManager.vb" />
     <Compile Include="VendemeloLib\DBObject.vb" />
     <Compile Include="VendemeloLib\MSSQLDBObject.vb" />
     <Compile Include="VendemeloLib\Pocos\Articulo.vb" />
+    <Compile Include="VendemeloLib\Pocos\Cliente.vb" />
     <Compile Include="VendemeloLib\VMLSounds.vb" />
   </ItemGroup>
   <ItemGroup>

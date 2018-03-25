@@ -33,6 +33,8 @@ Partial Class VendeloFRM
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.clientesList = New System.Windows.Forms.ListBox()
+        Me.clienteMGroup = New System.Windows.Forms.GroupBox()
         Me.SuspendLayout()
         '
         'articulosList
@@ -106,7 +108,7 @@ Partial Class VendeloFRM
         '
         Me.Button2.Font = New System.Drawing.Font("BankGothic Md BT", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.Green
-        Me.Button2.Location = New System.Drawing.Point(287, 226)
+        Me.Button2.Location = New System.Drawing.Point(308, 353)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(307, 23)
         Me.Button2.TabIndex = 7
@@ -119,7 +121,7 @@ Partial Class VendeloFRM
         Me.Label5.BackColor = System.Drawing.Color.Silver
         Me.Label5.Font = New System.Drawing.Font("BankGothic Md BT", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label5.Location = New System.Drawing.Point(321, 280)
+        Me.Label5.Location = New System.Drawing.Point(362, 379)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(198, 14)
         Me.Label5.TabIndex = 8
@@ -135,11 +137,30 @@ Partial Class VendeloFRM
         Me.Label6.TabIndex = 9
         Me.Label6.Text = "Haga click en el articulo para gregar 1 a la venta"
         '
+        'clientesList
+        '
+        Me.clientesList.FormattingEnabled = True
+        Me.clientesList.Location = New System.Drawing.Point(287, 192)
+        Me.clientesList.Name = "clientesList"
+        Me.clientesList.Size = New System.Drawing.Size(163, 95)
+        Me.clientesList.TabIndex = 10
+        '
+        'clienteMGroup
+        '
+        Me.clienteMGroup.Location = New System.Drawing.Point(298, 293)
+        Me.clienteMGroup.Name = "clienteMGroup"
+        Me.clienteMGroup.Size = New System.Drawing.Size(296, 54)
+        Me.clienteMGroup.TabIndex = 11
+        Me.clienteMGroup.TabStop = False
+        Me.clienteMGroup.Text = "Manejar Clientes"
+        '
         'VendeloFRM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(708, 370)
+        Me.ClientSize = New System.Drawing.Size(708, 393)
+        Me.Controls.Add(Me.clienteMGroup)
+        Me.Controls.Add(Me.clientesList)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Button2)
@@ -168,4 +189,6 @@ Partial Class VendeloFRM
     Friend WithEvents Button2 As Button
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
+    Friend WithEvents clientesList As ListBox
+    Friend WithEvents clienteMGroup As GroupBox
 End Class

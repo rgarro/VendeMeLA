@@ -21,3 +21,18 @@ SELECT count(*) FROM articulos WHERE etiqueta = 'Meneitos'
   DROP TABLE [articulos]
 
 GO
+
+CREATE TABLE [clientes] (
+	id int NOT NULL IDENTITY (1, 1),
+	nombre nvarchar(100) NOT NULL UNIQUE,
+	descuento float NOT NULL DEFAULT '0.0',
+  CONSTRAINT [PK_CLIENTES] PRIMARY KEY CLUSTERED
+  (
+  [id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+
+INSERT INTO clientes (nombre,descuento) VALUES 
+('Adam Baker',0.01) , ('Chiricuto',0.05), ('NelsonHofman',0.06)
