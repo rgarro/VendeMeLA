@@ -25,6 +25,26 @@
         Return result
     End Function
 
+    Public Function obtenerPorID(id As Integer)
+        Dim result As Articulo
+        Dim cmd As SqlClient.SqlCommand = Me.db.conn.CreateCommand()
+        cmd.CommandText = "SELECT * FROM articulos WHERE id = @id"
+        cmd.Parameters.AddWithValue("@id", id.ToString())
+        Dim reader As SqlClient.SqlDataReader = cmd.ExecuteReader()
+
+        Do While reader.Read()
+            result = New Articulo With {
+            .id = reader.GetValue(0),
+            .cantidad = reader.GetValue(2),
+            .etiqueta = reader.GetString(1),
+              .precio = reader.GetValue(3)
+            }
+
+        Loop
+        reader.Close()
+        Return result
+    End Function
+
     Public Function todosConExistencias()
         Dim result As New List(Of Articulo)
         Dim cmd As SqlClient.SqlCommand = Me.db.conn.CreateCommand()
@@ -73,6 +93,48 @@
                 cmd.ExecuteNonQuery()
             Catch ex As SqlClient.SqlException
                 MessageBox.Show(ex.Message.ToString(), "Error Guardando Articulo")
+            End Try
+        End Using
+    End Sub
+
+    Public Sub Update(art As Articulo)
+        Dim query As String = String.Empty
+        query &= "UPDATE articulos SET etiqueta = @etiqueta, cantidad=@cantidad, precio=@precio "
+        query &= "WHERE id=@id"
+        Using cmd As New SqlClient.SqlCommand()
+            With cmd
+                .Connection = Me.db.conn
+                .CommandType = CommandType.Text
+                .CommandText = query
+                .Parameters.AddWithValue("@id", art.id)
+                .Parameters.AddWithValue("@etiqueta", art.etiqueta)
+                .Parameters.AddWithValue("@cantidad", art.cantidad)
+                .Parameters.AddWithValue("@precio", art.precio)
+            End With
+            Try
+                cmd.ExecuteNonQuery()
+            Catch ex As SqlClient.SqlException
+                MessageBox.Show(ex.Message.ToString(), "Error Actualizando Articulo")
+            End Try
+        End Using
+    End Sub
+
+    Public Sub Delete(id As Integer)
+        Dim query As String = String.Empty
+        query &= "DELETE FROM articulos "
+        query &= "WHERE id = @id"
+        Using cmd As New SqlClient.SqlCommand()
+            With cmd
+                .Connection = Me.db.conn
+                .CommandType = CommandType.Text
+                .CommandText = query
+                .Parameters.AddWithValue("@id", id)
+
+            End With
+            Try
+                cmd.ExecuteNonQuery()
+            Catch ex As SqlClient.SqlException
+                MessageBox.Show(ex.Message.ToString(), "Error Borrando Articulo")
             End Try
         End Using
     End Sub

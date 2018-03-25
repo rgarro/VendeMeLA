@@ -5,7 +5,6 @@
     Private ArticuloEditable As Articulo
     Private OriginalEtiqueta As String
     Private sounds As VMLSounds = New VMLSounds()
-    Private AM As ArticulosManager = New ArticulosManager()
     Private sqlAM As ArticulosManagerSQL = New ArticulosManagerSQL()
 
     Public Sub New()
@@ -70,7 +69,6 @@
             Me.CleanForm()
         Else
             Me.sounds.errorSound.Play()
-            'MessageBox.Show("Articulo " & etiquetaComercialTXT.Text & " Existe.")
             errorsLabel.Text = "Articulo " & etiquetaComercialTXT.Text & " Existe."
         End If
     End Sub
@@ -91,7 +89,7 @@
     End Sub
 
     Private Sub getEditArticulo()
-        Me.ArticuloEditable = Me.AM.articulos.FindById(Convert.ToInt32(Me.EditId))
+        Me.ArticuloEditable = Me.sqlAM.obtenerPorID(Convert.ToInt32(Me.EditId))
     End Sub
 
     Private Sub setArticuloForm()
@@ -149,32 +147,16 @@
         Me.EprecioUnidadTXT.Text = ""
     End Sub
 
-    Private Function CheckIfEtiquetaExistsTwice(etiqueta As String)
-        Dim etiquetaExists As Boolean = False
-        Dim query As LiteDB.Query
-        Dim result = Me.AM.articulos.FindOne(query.EQ("etiqueta", etiqueta))
-        If Not IsNothing(result) Then
-            etiquetaExists = True
-        End If
-        Return etiquetaExists
-    End Function
-
     Private Sub ActualizarArticulo()
-        'Dim isExistingArticle As Boolean = Me.CheckIfEtiquetaExistsTwice(Me.etiquetaComercialTXT.Text)
-        'If Not isExistingArticle Then
-        Me.AM.articulos.Update(Me.ArticuloEditable)
+        Me.sqlAM.Update(Me.ArticuloEditable)
         actionLabel.Text = "El Articulo #" & Me.ArticuloEditable.id.ToString() & " - " & Me.ArticuloEditable.etiqueta & " ha sido Actualizado."
-        'Me.CleanForm()
-        'Else
-        'MessageBox.Show(etiquetaComercialTXT.Text & "Articulo Existe.")
-        'End If
     End Sub
 
     Private Sub borrarArticuloBTN_Click(sender As Object, e As EventArgs) Handles borrarArticuloBTN.Click
         Dim siBorrar = MessageBox.Show("Remover " & Me.ArticuloEditable.etiqueta, "caption", MessageBoxButtons.OKCancel)
         If siBorrar = DialogResult.OK Then
             actionLabel.Text = "El Articulo #" & Me.ArticuloEditable.id.ToString() & " - " & Me.ArticuloEditable.etiqueta & "ha sido BORRADO."
-            Me.AM.articulos.Delete(Me.ArticuloEditable.id)
+            Me.sqlAM.Delete(Me.ArticuloEditable.id)
             ListBox1.Items.Clear()
             Me.FillProductsList()
             Me.CleanEditForm()
