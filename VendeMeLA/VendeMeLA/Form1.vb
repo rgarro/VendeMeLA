@@ -14,4 +14,10 @@ Public Class Form1
         Me.sounds.clickSound.Play()
         EmbodegaloFRM.Show()
     End Sub
+
+    Private Sub clientesBTN_Click(sender As Object, e As EventArgs) Handles clientesBTN.Click
+        'open  clientes form here
+        Me.sounds.clickSound.Play()
+        ClientesFRM.Show()
+    End Sub
 End Class

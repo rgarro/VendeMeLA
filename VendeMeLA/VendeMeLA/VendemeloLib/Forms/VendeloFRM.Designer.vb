@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class VendeloFRM
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class VendeloFRM
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(VendeloFRM))
         Me.articulosList = New System.Windows.Forms.ListBox()
@@ -34,7 +34,6 @@ Partial Class VendeloFRM
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.clientesList = New System.Windows.Forms.ListBox()
-        Me.clienteMGroup = New System.Windows.Forms.GroupBox()
         Me.SuspendLayout()
         '
         'articulosList
@@ -145,21 +144,11 @@ Partial Class VendeloFRM
         Me.clientesList.Size = New System.Drawing.Size(163, 95)
         Me.clientesList.TabIndex = 10
         '
-        'clienteMGroup
-        '
-        Me.clienteMGroup.Location = New System.Drawing.Point(298, 293)
-        Me.clienteMGroup.Name = "clienteMGroup"
-        Me.clienteMGroup.Size = New System.Drawing.Size(296, 54)
-        Me.clienteMGroup.TabIndex = 11
-        Me.clienteMGroup.TabStop = False
-        Me.clienteMGroup.Text = "Manejar Clientes"
-        '
         'VendeloFRM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(708, 393)
-        Me.Controls.Add(Me.clienteMGroup)
         Me.Controls.Add(Me.clientesList)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
@@ -190,5 +179,4 @@ Partial Class VendeloFRM
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents clientesList As ListBox
-    Friend WithEvents clienteMGroup As GroupBox
 End Class

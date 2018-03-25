@@ -47,9 +47,6 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LiteDB, Version=4.1.1.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
-      <HintPath>..\packages\LiteDB.4.1.1\lib\net40\LiteDB.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MSSQL, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MSSQL.1.0.1\lib\net451\MSSQL.dll</HintPath>
@@ -85,10 +82,16 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmbodegaloFRM.Designer.vb">
+    <Compile Include="VendemeloLib\Forms\ClientesFRM.Designer.vb">
+      <DependentUpon>ClientesFRM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="VendemeloLib\Forms\ClientesFRM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VendemeloLib\Forms\EmbodegaloFRM.Designer.vb">
       <DependentUpon>EmbodegaloFRM.vb</DependentUpon>
     </Compile>
-    <Compile Include="EmbodegaloFRM.vb">
+    <Compile Include="VendemeloLib\Forms\EmbodegaloFRM.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.vb">
@@ -113,23 +116,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="VendeloFRM.Designer.vb">
+    <Compile Include="VendemeloLib\Forms\VendeloFRM.Designer.vb">
       <DependentUpon>VendeloFRM.vb</DependentUpon>
     </Compile>
-    <Compile Include="VendeloFRM.vb">
+    <Compile Include="VendemeloLib\Forms\VendeloFRM.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VendemeloLib\ArticulosManager.vb" />
     <Compile Include="VendemeloLib\ArticulosManagerSQL.vb" />
     <Compile Include="VendemeloLib\ClientesManager.vb" />
-    <Compile Include="VendemeloLib\DBObject.vb" />
     <Compile Include="VendemeloLib\MSSQLDBObject.vb" />
     <Compile Include="VendemeloLib\Pocos\Articulo.vb" />
     <Compile Include="VendemeloLib\Pocos\Cliente.vb" />
     <Compile Include="VendemeloLib\VMLSounds.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="EmbodegaloFRM.resx">
+    <EmbeddedResource Include="VendemeloLib\Forms\ClientesFRM.resx">
+      <DependentUpon>ClientesFRM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VendemeloLib\Forms\EmbodegaloFRM.resx">
       <DependentUpon>EmbodegaloFRM.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
@@ -141,7 +145,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="VendeloFRM.resx">
+    <EmbeddedResource Include="VendemeloLib\Forms\VendeloFRM.resx">
       <DependentUpon>VendeloFRM.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
@@ -160,6 +164,27 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="VendemeloLib\SQL\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Very-Basic-Music-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\49128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clientesIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clientesIconP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\49128P.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PPfactory_lift_warehouse_icon-icons.com_49903.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pdescarga.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

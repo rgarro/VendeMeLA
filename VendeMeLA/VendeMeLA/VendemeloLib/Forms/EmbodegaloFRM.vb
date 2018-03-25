@@ -10,6 +10,7 @@
     Public Sub New()
         ' This call is required by the designer.
         InitializeComponent()
+
         Me.FillProductsList()
     End Sub
 
