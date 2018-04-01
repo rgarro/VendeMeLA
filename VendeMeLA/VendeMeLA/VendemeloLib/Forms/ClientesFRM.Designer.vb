@@ -24,20 +24,22 @@ Partial Class ClientesFRM
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ClientesFRM))
         Me.clienteMGroup = New System.Windows.Forms.GroupBox()
+        Me.clientesList = New System.Windows.Forms.ListBox()
         Me.updateClientBTN = New System.Windows.Forms.Button()
         Me.borrarClienteBTN = New System.Windows.Forms.Button()
-        Me.clientesList = New System.Windows.Forms.ListBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.clienteNombreTXT = New System.Windows.Forms.TextBox()
+        Me.NuevoCliBtn = New System.Windows.Forms.Button()
         Me.clienteDescuentoTXT = New System.Windows.Forms.TextBox()
+        Me.clienteNombreTXT = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.updateClienteBox = New System.Windows.Forms.GroupBox()
         Me.clienteEditDescuento = New System.Windows.Forms.TextBox()
         Me.clienteEditNombreTXT = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.NuevoCliBtn = New System.Windows.Forms.Button()
+        Me.errorsLabel = New System.Windows.Forms.Label()
+        Me.actionLabel = New System.Windows.Forms.Label()
         Me.clienteMGroup.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.updateClienteBox.SuspendLayout()
@@ -46,12 +48,20 @@ Partial Class ClientesFRM
         'clienteMGroup
         '
         Me.clienteMGroup.Controls.Add(Me.clientesList)
-        Me.clienteMGroup.Location = New System.Drawing.Point(246, 20)
+        Me.clienteMGroup.Location = New System.Drawing.Point(246, 12)
         Me.clienteMGroup.Name = "clienteMGroup"
         Me.clienteMGroup.Size = New System.Drawing.Size(192, 326)
         Me.clienteMGroup.TabIndex = 12
         Me.clienteMGroup.TabStop = False
         Me.clienteMGroup.Text = "Manejar Clientes"
+        '
+        'clientesList
+        '
+        Me.clientesList.FormattingEnabled = True
+        Me.clientesList.Location = New System.Drawing.Point(6, 19)
+        Me.clientesList.Name = "clientesList"
+        Me.clientesList.Size = New System.Drawing.Size(163, 290)
+        Me.clientesList.TabIndex = 13
         '
         'updateClientBTN
         '
@@ -72,14 +82,6 @@ Partial Class ClientesFRM
         Me.borrarClienteBTN.Text = "Borrar"
         Me.borrarClienteBTN.UseVisualStyleBackColor = True
         '
-        'clientesList
-        '
-        Me.clientesList.FormattingEnabled = True
-        Me.clientesList.Location = New System.Drawing.Point(6, 19)
-        Me.clientesList.Name = "clientesList"
-        Me.clientesList.Size = New System.Drawing.Size(163, 290)
-        Me.clientesList.TabIndex = 13
-        '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.NuevoCliBtn)
@@ -94,14 +96,28 @@ Partial Class ClientesFRM
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Nuevo Cliente"
         '
-        'Label1
+        'NuevoCliBtn
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 28)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(44, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Nombre"
+        Me.NuevoCliBtn.Location = New System.Drawing.Point(64, 98)
+        Me.NuevoCliBtn.Name = "NuevoCliBtn"
+        Me.NuevoCliBtn.Size = New System.Drawing.Size(75, 23)
+        Me.NuevoCliBtn.TabIndex = 4
+        Me.NuevoCliBtn.Text = "Nuevo"
+        Me.NuevoCliBtn.UseVisualStyleBackColor = True
+        '
+        'clienteDescuentoTXT
+        '
+        Me.clienteDescuentoTXT.Location = New System.Drawing.Point(82, 60)
+        Me.clienteDescuentoTXT.Name = "clienteDescuentoTXT"
+        Me.clienteDescuentoTXT.Size = New System.Drawing.Size(100, 20)
+        Me.clienteDescuentoTXT.TabIndex = 3
+        '
+        'clienteNombreTXT
+        '
+        Me.clienteNombreTXT.Location = New System.Drawing.Point(54, 28)
+        Me.clienteNombreTXT.Name = "clienteNombreTXT"
+        Me.clienteNombreTXT.Size = New System.Drawing.Size(146, 20)
+        Me.clienteNombreTXT.TabIndex = 2
         '
         'Label2
         '
@@ -112,19 +128,14 @@ Partial Class ClientesFRM
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Descuento"
         '
-        'clienteNombreTXT
+        'Label1
         '
-        Me.clienteNombreTXT.Location = New System.Drawing.Point(54, 28)
-        Me.clienteNombreTXT.Name = "clienteNombreTXT"
-        Me.clienteNombreTXT.Size = New System.Drawing.Size(146, 20)
-        Me.clienteNombreTXT.TabIndex = 2
-        '
-        'clienteDescuentoTXT
-        '
-        Me.clienteDescuentoTXT.Location = New System.Drawing.Point(82, 60)
-        Me.clienteDescuentoTXT.Name = "clienteDescuentoTXT"
-        Me.clienteDescuentoTXT.Size = New System.Drawing.Size(100, 20)
-        Me.clienteDescuentoTXT.TabIndex = 3
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(6, 28)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(44, 13)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Nombre"
         '
         'updateClienteBox
         '
@@ -173,20 +184,33 @@ Partial Class ClientesFRM
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "Nombre"
         '
-        'NuevoCliBtn
+        'errorsLabel
         '
-        Me.NuevoCliBtn.Location = New System.Drawing.Point(64, 98)
-        Me.NuevoCliBtn.Name = "NuevoCliBtn"
-        Me.NuevoCliBtn.Size = New System.Drawing.Size(75, 23)
-        Me.NuevoCliBtn.TabIndex = 4
-        Me.NuevoCliBtn.Text = "Nuevo"
-        Me.NuevoCliBtn.UseVisualStyleBackColor = True
+        Me.errorsLabel.AutoSize = True
+        Me.errorsLabel.Font = New System.Drawing.Font("PanRoman", 8.249999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.errorsLabel.ForeColor = System.Drawing.Color.Red
+        Me.errorsLabel.Location = New System.Drawing.Point(21, 166)
+        Me.errorsLabel.Name = "errorsLabel"
+        Me.errorsLabel.Size = New System.Drawing.Size(0, 11)
+        Me.errorsLabel.TabIndex = 16
+        '
+        'actionLabel
+        '
+        Me.actionLabel.AutoSize = True
+        Me.actionLabel.Font = New System.Drawing.Font("BankGothic Md BT", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.actionLabel.ForeColor = System.Drawing.Color.DarkGreen
+        Me.actionLabel.Location = New System.Drawing.Point(151, 345)
+        Me.actionLabel.Name = "actionLabel"
+        Me.actionLabel.Size = New System.Drawing.Size(0, 14)
+        Me.actionLabel.TabIndex = 17
         '
         'ClientesFRM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(477, 368)
+        Me.Controls.Add(Me.actionLabel)
+        Me.Controls.Add(Me.errorsLabel)
         Me.Controls.Add(Me.updateClienteBox)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.clienteMGroup)
@@ -199,6 +223,7 @@ Partial Class ClientesFRM
         Me.updateClienteBox.ResumeLayout(False)
         Me.updateClienteBox.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -217,4 +242,6 @@ Partial Class ClientesFRM
     Friend WithEvents clienteEditNombreTXT As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
+    Friend WithEvents errorsLabel As Label
+    Friend WithEvents actionLabel As Label
 End Class

@@ -36,3 +36,5 @@ GO
 
 INSERT INTO clientes (nombre,descuento) VALUES 
 ('Adam Baker',0.01) , ('Chiricuto',0.05), ('NelsonHofman',0.06)
+
+SELECT * FROM clientes

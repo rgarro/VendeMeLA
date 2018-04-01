@@ -41,4 +41,37 @@
         Return result
     End Function
 
+    Public Function CheckIfNombreExists(nombre As String)
+        Dim nombreExists As Boolean = False
+        Dim cmd As SqlClient.SqlCommand = Me.db.conn.CreateCommand()
+        cmd.CommandText = "SELECT count(*) FROM clientes WHERE nombre = '" & nombre & "'"
+        Dim count As Integer = cmd.ExecuteScalar()
+        'System.Console.WriteLine(count)
+        If count > 0 Then
+            nombreExists = True
+        End If
+
+        Return nombreExists
+    End Function
+
+    Public Sub Insert(cli As Cliente)
+        Dim query As String = String.Empty
+        query &= "INSERT INTO clientes (nombre, descuento) "
+        query &= "VALUES (@nombre,@descuento)"
+        Using cmd As New SqlClient.SqlCommand()
+            With cmd
+                .Connection = Me.db.conn
+                .CommandType = CommandType.Text
+                .CommandText = query
+                .Parameters.AddWithValue("@nombre", cli.nombre)
+                .Parameters.AddWithValue("@descuento", cli.descuento)
+            End With
+            Try
+                cmd.ExecuteNonQuery()
+            Catch ex As SqlClient.SqlException
+                MessageBox.Show(ex.Message.ToString(), "Error Guardando Cliente")
+            End Try
+        End Using
+    End Sub
+
 End Class
