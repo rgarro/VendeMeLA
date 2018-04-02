@@ -74,4 +74,24 @@
         End Using
     End Sub
 
+    Public Sub Delete(id As Integer)
+        Dim query As String = String.Empty
+        query &= "DELETE FROM clientes "
+        query &= "WHERE id = @id"
+        Using cmd As New SqlClient.SqlCommand()
+            With cmd
+                .Connection = Me.db.conn
+                .CommandType = CommandType.Text
+                .CommandText = query
+                .Parameters.AddWithValue("@id", id)
+
+            End With
+            Try
+                cmd.ExecuteNonQuery()
+            Catch ex As SqlClient.SqlException
+                MessageBox.Show(ex.Message.ToString(), "Error Borrando Cliente")
+            End Try
+        End Using
+    End Sub
+
 End Class

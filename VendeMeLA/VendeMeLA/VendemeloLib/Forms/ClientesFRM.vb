@@ -92,4 +92,20 @@
         Me.clienteDescuentoTXT.Text = ""
     End Sub
 
+    Private Sub CleanEditForm()
+        Me.clienteEditNombreTXT.Text = ""
+        Me.clienteEditDescuento.Text = ""
+    End Sub
+
+    Private Sub borrarClienteBTN_Click(sender As Object, e As EventArgs) Handles borrarClienteBTN.Click
+        Dim siBorrar = MessageBox.Show("Remover " & Me.ClienteEditable.nombre, "caption", MessageBoxButtons.OKCancel)
+        If siBorrar = DialogResult.OK Then
+            actionLabel.Text = "El Cliente #" & Me.ClienteEditable.id.ToString() & " - " & Me.ClienteEditable.nombre & "ha sido BORRADO."
+            Me.CM.Delete(Me.ClienteEditable.id)
+
+            Me.llenarClientesDisponibles()
+            Me.CleanEditForm()
+            updateClienteBox.Hide()
+        End If
+    End Sub
 End Class
