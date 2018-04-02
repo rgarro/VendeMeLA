@@ -74,6 +74,27 @@
         End Using
     End Sub
 
+    Public Sub Update(cli As Cliente)
+        Dim query As String = String.Empty
+        query &= "UPDATE clientes SET nombre = @nombre, descuento=@descuento "
+        query &= "WHERE id=@id"
+        Using cmd As New SqlClient.SqlCommand()
+            With cmd
+                .Connection = Me.db.conn
+                .CommandType = CommandType.Text
+                .CommandText = query
+                .Parameters.AddWithValue("@id", cli.id)
+                .Parameters.AddWithValue("@nombre", cli.nombre)
+                .Parameters.AddWithValue("@descuento", cli.descuento)
+            End With
+            Try
+                cmd.ExecuteNonQuery()
+            Catch ex As SqlClient.SqlException
+                MessageBox.Show(ex.Message.ToString(), "Error Actualizando Cliente")
+            End Try
+        End Using
+    End Sub
+
     Public Sub Delete(id As Integer)
         Dim query As String = String.Empty
         query &= "DELETE FROM clientes "

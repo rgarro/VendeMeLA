@@ -199,7 +199,7 @@ Partial Class ClientesFRM
         Me.actionLabel.AutoSize = True
         Me.actionLabel.Font = New System.Drawing.Font("BankGothic Md BT", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.actionLabel.ForeColor = System.Drawing.Color.DarkGreen
-        Me.actionLabel.Location = New System.Drawing.Point(151, 345)
+        Me.actionLabel.Location = New System.Drawing.Point(21, 345)
         Me.actionLabel.Name = "actionLabel"
         Me.actionLabel.Size = New System.Drawing.Size(0, 14)
         Me.actionLabel.TabIndex = 17

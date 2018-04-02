@@ -108,4 +108,47 @@
             updateClienteBox.Hide()
         End If
     End Sub
+
+    Private Sub updateClientBTN_Click(sender As Object, e As EventArgs) Handles updateClientBTN.Click
+        Me.sounds.clickSound.Play()
+        If (Me.esValidoClienteActualizable()) Then
+            Me.obtenerDatosProductoEditar()
+            Me.ActualizarCliente()
+            Me.llenarClientesDisponibles()
+            Me.CleanEditForm()
+            updateClienteBox.Hide()
+        Else
+            Me.sounds.errorSound.Play()
+            Dim errorsStr As String = String.Join(Environment.NewLine, Me.Errors)
+            MessageBox.Show(errorsStr)
+            Me.Errors.Clear()
+        End If
+    End Sub
+
+    Private Sub ActualizarCliente()
+        Me.CM.Update(Me.ClienteEditable)
+        actionLabel.Text = "El Cliente #" & Me.ClienteEditable.id.ToString() & " - " & Me.ClienteEditable.nombre & " ha sido Actualizado."
+    End Sub
+
+    Private Function esValidoClienteActualizable()
+        Dim isValid As Boolean = True
+        'Nombre del Cliente
+        If (clienteEditNombreTXT.Text.Length < 1) Then
+            Me.Errors.Add("El Nombre es requerido")
+        End If
+        'Descuento del cliente
+        If (Not IsNumeric(clienteEditDescuento.Text)) Then
+            Me.Errors.Add("El Descuento es requerido y debe ser un numero")
+        End If
+        If Errors.Count > 0 Then
+            isValid = False
+        End If
+        Return isValid
+    End Function
+
+    Private Sub obtenerDatosProductoEditar()
+        Me.ClienteEditable.nombre = clienteEditNombreTXT.Text
+        Me.ClienteEditable.descuento = clienteEditDescuento.Text
+    End Sub
+
 End Class
