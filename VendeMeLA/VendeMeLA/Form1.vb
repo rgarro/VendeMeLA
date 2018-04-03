@@ -21,15 +21,22 @@ Public Class Form1
         ClientesFRM.Show()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-
-    End Sub
-
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Will open login
-
+        Me.HideAllButtons()
         LoginForm.Show()
         LoginForm.TopMost = True
 
+    End Sub
+
+    Private Sub HideAllButtons()
+        showVendeFormBtn.Hide()
+        showEmbodegaFormBtn.Hide()
+        clientesBTN.Hide()
+        usersBtn.Hide()
+    End Sub
+
+    Private Sub usersBtn_Click(sender As Object, e As EventArgs) Handles usersBtn.Click
+        Me.sounds.clickSound.Play()
     End Sub
 End Class

@@ -133,6 +133,7 @@
     <Compile Include="VendemeloLib\MSSQLDBObject.vb" />
     <Compile Include="VendemeloLib\Pocos\Articulo.vb" />
     <Compile Include="VendemeloLib\Pocos\Cliente.vb" />
+    <Compile Include="VendemeloLib\Pocos\Usuario.vb" />
     <Compile Include="VendemeloLib\VMLSounds.vb" />
   </ItemGroup>
   <ItemGroup>

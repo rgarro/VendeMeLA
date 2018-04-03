@@ -23,7 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.usersBtn = New System.Windows.Forms.Button()
         Me.clientesBTN = New System.Windows.Forms.Button()
         Me.showEmbodegaFormBtn = New System.Windows.Forms.Button()
         Me.showVendeFormBtn = New System.Windows.Forms.Button()
@@ -31,19 +31,19 @@ Partial Class Form1
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'Button1
+        'usersBtn
         '
-        Me.Button1.BackColor = System.Drawing.Color.White
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Image = Global.VendeMeLA.My.Resources.Resources._49128P
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.Button1.Location = New System.Drawing.Point(368, 38)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(163, 77)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Usuarios"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.usersBtn.BackColor = System.Drawing.Color.White
+        Me.usersBtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.usersBtn.Image = Global.VendeMeLA.My.Resources.Resources._49128P
+        Me.usersBtn.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.usersBtn.Location = New System.Drawing.Point(368, 38)
+        Me.usersBtn.Name = "usersBtn"
+        Me.usersBtn.Size = New System.Drawing.Size(163, 77)
+        Me.usersBtn.TabIndex = 4
+        Me.usersBtn.Text = "Usuarios"
+        Me.usersBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.usersBtn.UseVisualStyleBackColor = False
         '
         'clientesBTN
         '
@@ -100,7 +100,7 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(569, 357)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.usersBtn)
         Me.Controls.Add(Me.clientesBTN)
         Me.Controls.Add(Me.showEmbodegaFormBtn)
         Me.Controls.Add(Me.showVendeFormBtn)
@@ -118,5 +118,5 @@ Partial Class Form1
     Friend WithEvents showVendeFormBtn As Button
     Friend WithEvents showEmbodegaFormBtn As Button
     Friend WithEvents clientesBTN As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents usersBtn As Button
 End Class
