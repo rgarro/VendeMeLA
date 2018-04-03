@@ -116,6 +116,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="VendemeloLib\Forms\LoginForm.Designer.vb">
+      <DependentUpon>LoginForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="VendemeloLib\Forms\LoginForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="VendemeloLib\Forms\VendeloFRM.Designer.vb">
       <DependentUpon>VendeloFRM.vb</DependentUpon>
     </Compile>
@@ -144,6 +150,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VendemeloLib\Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VendemeloLib\Forms\VendeloFRM.resx">
       <DependentUpon>VendeloFRM.vb</DependentUpon>

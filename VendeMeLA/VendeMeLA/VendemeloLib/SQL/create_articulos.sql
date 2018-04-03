@@ -38,3 +38,24 @@ INSERT INTO clientes (nombre,descuento) VALUES
 ('Adam Baker',0.01) , ('Chiricuto',0.05), ('NelsonHofman',0.06)
 
 SELECT * FROM clientes
+
+
+CREATE TABLE [usuarios] (
+	id int NOT NULL IDENTITY (1, 1),
+	usuario nvarchar(100) NOT NULL UNIQUE,
+	clave nvarchar(100) NOT NULL,
+	es_cajero bit NOT NULL DEFAULT '1',
+	es_admin bit NOT NULL DEFAULT '1',
+  CONSTRAINT [PK_USUARIOS] PRIMARY KEY CLUSTERED
+  (
+  [id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+
+INSERT INTO usuarios (usuario,clave,es_cajero,es_admin) VALUES 
+('admin','8ac6b0daa930f428f9e79a662123beedec453e15',1,1) 
+
+
+SELECT * FROM usuarios

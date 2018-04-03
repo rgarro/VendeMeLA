@@ -20,4 +20,16 @@ Public Class Form1
         Me.sounds.clickSound.Play()
         ClientesFRM.Show()
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Will open login
+
+        LoginForm.Show()
+        LoginForm.TopMost = True
+
+    End Sub
 End Class
