@@ -2,7 +2,7 @@
 Imports VendeMeLA
 
 Public Class Form1
-
+    Public usuarioActual As Usuario
     Private sounds As VMLSounds = New VMLSounds()
 
     Private Sub showVendeFormBtn_Click(sender As Object, e As EventArgs) Handles showVendeFormBtn.Click
@@ -36,7 +36,30 @@ Public Class Form1
         usersBtn.Hide()
     End Sub
 
+    Private Sub ShowAdminButtons()
+        showEmbodegaFormBtn.Show()
+        clientesBTN.Show()
+        usersBtn.Show()
+    End Sub
+
+    Private Sub ShowCajeroButtons()
+        showVendeFormBtn.Show()
+    End Sub
+
     Private Sub usersBtn_Click(sender As Object, e As EventArgs) Handles usersBtn.Click
         Me.sounds.clickSound.Play()
     End Sub
+
+    Public Sub despuesDeAutenticar()
+        Me.sounds.processSound.Play()
+        'System.Console.WriteLine(Me.usuarioActual.usuario)
+        Me.actionLabel.Text = "Bienvenido: " & Me.usuarioActual.usuario
+        If Me.usuarioActual.es_admin Then
+            Me.ShowAdminButtons()
+        End If
+        If Me.usuarioActual.es_cajero Then
+            Me.ShowCajeroButtons()
+        End If
+    End Sub
+
 End Class

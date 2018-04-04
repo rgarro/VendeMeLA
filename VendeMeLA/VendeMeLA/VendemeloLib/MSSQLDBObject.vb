@@ -13,7 +13,7 @@ Public Class MSSQLDBObject
         Me.conn = New SqlConnection("Initial Catalog=vendemela;" & "Data Source=localhost;Integrated Security=SSPI;MultipleActiveResultSets=True;")
     End Sub
 
-    'fucking destroy ...
+
     Protected Overrides Sub Finalize()
         Me.conn.Close()
     End Sub

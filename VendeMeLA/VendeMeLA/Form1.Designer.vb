@@ -28,6 +28,7 @@ Partial Class Form1
         Me.showEmbodegaFormBtn = New System.Windows.Forms.Button()
         Me.showVendeFormBtn = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.actionLabel = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -37,7 +38,7 @@ Partial Class Form1
         Me.usersBtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.usersBtn.Image = Global.VendeMeLA.My.Resources.Resources._49128P
         Me.usersBtn.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.usersBtn.Location = New System.Drawing.Point(368, 38)
+        Me.usersBtn.Location = New System.Drawing.Point(364, 46)
         Me.usersBtn.Name = "usersBtn"
         Me.usersBtn.Size = New System.Drawing.Size(163, 77)
         Me.usersBtn.TabIndex = 4
@@ -51,7 +52,7 @@ Partial Class Form1
         Me.clientesBTN.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.clientesBTN.Image = Global.VendeMeLA.My.Resources.Resources.clientesIconP
         Me.clientesBTN.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.clientesBTN.Location = New System.Drawing.Point(29, 30)
+        Me.clientesBTN.Location = New System.Drawing.Point(29, 38)
         Me.clientesBTN.Name = "clientesBTN"
         Me.clientesBTN.Size = New System.Drawing.Size(182, 85)
         Me.clientesBTN.TabIndex = 3
@@ -95,11 +96,22 @@ Partial Class Form1
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
+        'actionLabel
+        '
+        Me.actionLabel.AutoSize = True
+        Me.actionLabel.Font = New System.Drawing.Font("BankGothic Md BT", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.actionLabel.ForeColor = System.Drawing.Color.DarkGreen
+        Me.actionLabel.Location = New System.Drawing.Point(26, 10)
+        Me.actionLabel.Name = "actionLabel"
+        Me.actionLabel.Size = New System.Drawing.Size(0, 14)
+        Me.actionLabel.TabIndex = 11
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(569, 357)
+        Me.Controls.Add(Me.actionLabel)
         Me.Controls.Add(Me.usersBtn)
         Me.Controls.Add(Me.clientesBTN)
         Me.Controls.Add(Me.showEmbodegaFormBtn)
@@ -111,6 +123,7 @@ Partial Class Form1
         Me.Text = " "
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -119,4 +132,5 @@ Partial Class Form1
     Friend WithEvents showEmbodegaFormBtn As Button
     Friend WithEvents clientesBTN As Button
     Friend WithEvents usersBtn As Button
+    Friend WithEvents actionLabel As Label
 End Class
