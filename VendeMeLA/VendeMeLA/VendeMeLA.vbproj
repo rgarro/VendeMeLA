@@ -130,6 +130,7 @@
     </Compile>
     <Compile Include="VendemeloLib\ArticulosManagerSQL.vb" />
     <Compile Include="VendemeloLib\ClientesManager.vb" />
+    <Compile Include="VendemeloLib\LoginManager.vb" />
     <Compile Include="VendemeloLib\MSSQLDBObject.vb" />
     <Compile Include="VendemeloLib\Pocos\Articulo.vb" />
     <Compile Include="VendemeloLib\Pocos\Cliente.vb" />

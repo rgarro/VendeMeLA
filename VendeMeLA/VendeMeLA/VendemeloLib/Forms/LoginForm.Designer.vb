@@ -38,6 +38,7 @@ Partial Class LoginForm
         Me.OK = New System.Windows.Forms.Button()
         Me.Cancel = New System.Windows.Forms.Button()
         Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
+        Me.errorsLabel = New System.Windows.Forms.Label()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -100,6 +101,16 @@ Partial Class LoginForm
         Me.LogoPictureBox.TabIndex = 0
         Me.LogoPictureBox.TabStop = False
         '
+        'errorsLabel
+        '
+        Me.errorsLabel.AutoSize = True
+        Me.errorsLabel.Font = New System.Drawing.Font("PanRoman", 8.249999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.errorsLabel.ForeColor = System.Drawing.Color.Red
+        Me.errorsLabel.Location = New System.Drawing.Point(195, 135)
+        Me.errorsLabel.Name = "errorsLabel"
+        Me.errorsLabel.Size = New System.Drawing.Size(0, 11)
+        Me.errorsLabel.TabIndex = 17
+        '
         'LoginForm
         '
         Me.AcceptButton = Me.OK
@@ -107,6 +118,7 @@ Partial Class LoginForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel
         Me.ClientSize = New System.Drawing.Size(401, 192)
+        Me.Controls.Add(Me.errorsLabel)
         Me.Controls.Add(Me.Cancel)
         Me.Controls.Add(Me.OK)
         Me.Controls.Add(Me.PasswordTextBox)
@@ -128,4 +140,5 @@ Partial Class LoginForm
 
     End Sub
 
+    Friend WithEvents errorsLabel As Label
 End Class
