@@ -122,6 +122,12 @@
     <Compile Include="VendemeloLib\Forms\LoginForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="VendemeloLib\Forms\UsuariosForm.Designer.vb">
+      <DependentUpon>UsuariosForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="VendemeloLib\Forms\UsuariosForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="VendemeloLib\Forms\VendeloFRM.Designer.vb">
       <DependentUpon>VendeloFRM.vb</DependentUpon>
     </Compile>
@@ -135,6 +141,7 @@
     <Compile Include="VendemeloLib\Pocos\Articulo.vb" />
     <Compile Include="VendemeloLib\Pocos\Cliente.vb" />
     <Compile Include="VendemeloLib\Pocos\Usuario.vb" />
+    <Compile Include="VendemeloLib\UsuariosManager.vb" />
     <Compile Include="VendemeloLib\VMLSounds.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VendemeloLib\Forms\LoginForm.resx">
       <DependentUpon>LoginForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VendemeloLib\Forms\UsuariosForm.resx">
+      <DependentUpon>UsuariosForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VendemeloLib\Forms\VendeloFRM.resx">
       <DependentUpon>VendeloFRM.vb</DependentUpon>

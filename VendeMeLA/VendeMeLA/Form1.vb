@@ -48,6 +48,7 @@ Public Class Form1
 
     Private Sub usersBtn_Click(sender As Object, e As EventArgs) Handles usersBtn.Click
         Me.sounds.clickSound.Play()
+        UsuariosForm.Show()
     End Sub
 
     Public Sub despuesDeAutenticar()
