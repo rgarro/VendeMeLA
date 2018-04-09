@@ -24,4 +24,39 @@
         Return result
     End Function
 
+    Public Sub Insert(u As Usuario)
+        Dim query As String = String.Empty
+        query &= "INSERT INTO usuarios (usuario, clave, es_cajero,es_admin) "
+        query &= "VALUES (@usuario,@clave,@es_cajero,@es_admin)"
+        Using cmd As New SqlClient.SqlCommand()
+            With cmd
+                .Connection = Me.db.conn
+                .CommandType = CommandType.Text
+                .CommandText = query
+                .Parameters.AddWithValue("@usuario", u.usuario)
+                .Parameters.AddWithValue("@clave", u.clave)
+                .Parameters.AddWithValue("@es_cajero", u.es_cajero)
+                .Parameters.AddWithValue("@es_admin", u.es_admin)
+            End With
+            Try
+                cmd.ExecuteNonQuery()
+            Catch ex As SqlClient.SqlException
+                MessageBox.Show(ex.Message.ToString(), "Error Guardando Usuario")
+            End Try
+        End Using
+    End Sub
+
+    Public Function CheckIfUsuarioExists(usuario As String)
+        Dim usuarioExists As Boolean = False
+        Dim cmd As SqlClient.SqlCommand = Me.db.conn.CreateCommand()
+        cmd.CommandText = "SELECT count(*) FROM usuarios WHERE usuario = '" & usuario & "'"
+        Dim count As Integer = cmd.ExecuteScalar()
+        'System.Console.WriteLine(count)
+        If count > 0 Then
+            usuarioExists = True
+        End If
+
+        Return usuarioExists
+    End Function
+
 End Class
