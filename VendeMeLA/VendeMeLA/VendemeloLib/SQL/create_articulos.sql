@@ -56,6 +56,6 @@ GO
 
 INSERT INTO usuarios (usuario,clave,es_cajero,es_admin) VALUES 
 ('admin','8ac6b0daa930f428f9e79a662123beedec453e15',1,1) 
-
+GO
 
 SELECT * FROM usuarios

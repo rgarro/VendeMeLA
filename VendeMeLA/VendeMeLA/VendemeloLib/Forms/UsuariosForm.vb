@@ -1,5 +1,4 @@
-﻿Imports System.Security.Cryptography
-
+﻿
 Public Class UsuariosForm
 
     Private sounds As VMLSounds = New VMLSounds()
@@ -79,7 +78,7 @@ Public Class UsuariosForm
             Me.CleanForm()
         Else
             Me.sounds.errorSound.Play()
-            errorsLabel.Text = "Cliente " & clienteNombreTXT.Text & " Existe."
+            errorsLabel.Text = "Usuario " & usuarioTxt.Text & " Existe."
         End If
     End Sub
 

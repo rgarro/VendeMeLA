@@ -1,4 +1,6 @@
-﻿Public Class UsuariosManager
+﻿Imports System.Security.Cryptography
+
+Public Class UsuariosManager
 
     Private db As MSSQLDBObject
 
@@ -24,6 +26,20 @@
         Return result
     End Function
 
+    Private Function hashClave(claveNOhashed As String)
+        Dim sha1Obj As New Security.Cryptography.SHA1CryptoServiceProvider
+        Dim bytesToHash() As Byte = System.Text.Encoding.ASCII.GetBytes(claveNOhashed)
+        bytesToHash = sha1Obj.ComputeHash(bytesToHash)
+
+        Dim hashedClave As String = ""
+
+        For Each b As Byte In bytesToHash
+            hashedClave += b.ToString("x2")
+        Next
+
+        Return hashedClave
+    End Function
+
     Public Sub Insert(u As Usuario)
         Dim query As String = String.Empty
         query &= "INSERT INTO usuarios (usuario, clave, es_cajero,es_admin) "
@@ -34,7 +50,7 @@
                 .CommandType = CommandType.Text
                 .CommandText = query
                 .Parameters.AddWithValue("@usuario", u.usuario)
-                .Parameters.AddWithValue("@clave", u.clave)
+                .Parameters.AddWithValue("@clave", Me.hashClave(u.clave))
                 .Parameters.AddWithValue("@es_cajero", u.es_cajero)
                 .Parameters.AddWithValue("@es_admin", u.es_admin)
             End With
