@@ -75,4 +75,48 @@ Public Class UsuariosManager
         Return usuarioExists
     End Function
 
+    Public Function obtenerPorID(id As Integer)
+        Dim result As Usuario
+        Dim cmd As SqlClient.SqlCommand = Me.db.conn.CreateCommand()
+        cmd.CommandText = "SELECT * FROM usuarios WHERE id = @id"
+        cmd.Parameters.AddWithValue("@id", id.ToString())
+        Dim reader As SqlClient.SqlDataReader = cmd.ExecuteReader()
+
+        Do While reader.Read()
+            result = New Usuario With {
+            .id = reader.GetValue(0),
+            .usuario = reader.GetString(1),
+              .clave = reader.GetString(2),
+              .es_cajero = reader.GetValue(3),
+              .es_admin = reader.GetValue(4)
+            }
+
+        Loop
+        reader.Close()
+        Return result
+    End Function
+
+    Public Sub Update(u As Usuario)
+        Dim query As String = String.Empty
+        query &= "UPDATE usuarios SET usuario = @usuario, clave=@clave, es_cajero=@es_cajero, es_admin=@es_admin "
+        query &= "WHERE id=@id"
+        Using cmd As New SqlClient.SqlCommand()
+            With cmd
+                .Connection = Me.db.conn
+                .CommandType = CommandType.Text
+                .CommandText = query
+                .Parameters.AddWithValue("@id", u.id)
+                .Parameters.AddWithValue("@usuario", u.usuario)
+                .Parameters.AddWithValue("@clave", u.clave)
+                .Parameters.AddWithValue("@es_cajero", u.es_cajero)
+                .Parameters.AddWithValue("@es_admin", u.es_admin)
+            End With
+            Try
+                cmd.ExecuteNonQuery()
+            Catch ex As SqlClient.SqlException
+                MessageBox.Show(ex.Message.ToString(), "Error Actualizando Usuario")
+            End Try
+        End Using
+    End Sub
+
 End Class
