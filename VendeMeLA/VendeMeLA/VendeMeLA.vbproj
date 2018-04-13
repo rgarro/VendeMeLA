@@ -82,6 +82,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="VendemeloLib\DetallesManager.vb" />
+    <Compile Include="VendemeloLib\FacturasManager.vb" />
     <Compile Include="VendemeloLib\Forms\ClientesFRM.Designer.vb">
       <DependentUpon>ClientesFRM.vb</DependentUpon>
     </Compile>
@@ -140,6 +142,8 @@
     <Compile Include="VendemeloLib\MSSQLDBObject.vb" />
     <Compile Include="VendemeloLib\Pocos\Articulo.vb" />
     <Compile Include="VendemeloLib\Pocos\Cliente.vb" />
+    <Compile Include="VendemeloLib\Pocos\Detalle.vb" />
+    <Compile Include="VendemeloLib\Pocos\Factura.vb" />
     <Compile Include="VendemeloLib\Pocos\Usuario.vb" />
     <Compile Include="VendemeloLib\UsuariosManager.vb" />
     <Compile Include="VendemeloLib\VMLSounds.vb" />

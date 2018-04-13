@@ -5,6 +5,8 @@ Public Class VendeloFRM
     Private sounds As VMLSounds = New VMLSounds()
     Private sqlAM As ArticulosManagerSQL = New ArticulosManagerSQL()
     Private CM As ClientesManager = New ClientesManager()
+    Private detalles As List(Of Detalle)
+    Private factura As Factura
 
     Public Sub New()
         ' This call is required by the designer.
