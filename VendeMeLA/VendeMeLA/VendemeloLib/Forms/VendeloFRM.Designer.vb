@@ -35,6 +35,7 @@ Partial Class VendeloFRM
         Me.clientesList = New System.Windows.Forms.ListBox()
         Me.agregarBtn = New System.Windows.Forms.Button()
         Me.preventaList = New System.Windows.Forms.ListBox()
+        Me.reciboUltimaBtn = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'articulosList
@@ -78,11 +79,11 @@ Partial Class VendeloFRM
         '
         Me.removerBtn.Font = New System.Drawing.Font("BankGothic Md BT", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.removerBtn.ForeColor = System.Drawing.Color.Orange
-        Me.removerBtn.Location = New System.Drawing.Point(621, 43)
+        Me.removerBtn.Location = New System.Drawing.Point(581, 43)
         Me.removerBtn.Name = "removerBtn"
-        Me.removerBtn.Size = New System.Drawing.Size(75, 23)
+        Me.removerBtn.Size = New System.Drawing.Size(126, 23)
         Me.removerBtn.TabIndex = 5
-        Me.removerBtn.Text = "Remover"
+        Me.removerBtn.Text = "Remover Todos"
         Me.removerBtn.UseVisualStyleBackColor = True
         '
         'labelTotal
@@ -156,11 +157,23 @@ Partial Class VendeloFRM
         Me.preventaList.Size = New System.Drawing.Size(294, 95)
         Me.preventaList.TabIndex = 12
         '
+        'reciboUltimaBtn
+        '
+        Me.reciboUltimaBtn.Font = New System.Drawing.Font("BankGothic Md BT", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.reciboUltimaBtn.ForeColor = System.Drawing.Color.Orange
+        Me.reciboUltimaBtn.Location = New System.Drawing.Point(499, 227)
+        Me.reciboUltimaBtn.Name = "reciboUltimaBtn"
+        Me.reciboUltimaBtn.Size = New System.Drawing.Size(165, 23)
+        Me.reciboUltimaBtn.TabIndex = 13
+        Me.reciboUltimaBtn.Text = "Recibo Ultima Venta"
+        Me.reciboUltimaBtn.UseVisualStyleBackColor = True
+        '
         'VendeloFRM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(708, 393)
+        Me.Controls.Add(Me.reciboUltimaBtn)
         Me.Controls.Add(Me.preventaList)
         Me.Controls.Add(Me.agregarBtn)
         Me.Controls.Add(Me.clientesList)
@@ -193,4 +206,5 @@ Partial Class VendeloFRM
     Friend WithEvents clientesList As ListBox
     Friend WithEvents agregarBtn As Button
     Friend WithEvents preventaList As ListBox
+    Friend WithEvents reciboUltimaBtn As Button
 End Class

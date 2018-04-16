@@ -15,6 +15,7 @@ Public Class VendeloFRM
     Private total As Decimal = 0
     Private no_ha_agregado As Boolean = True
     Private puede_completar_venta As Boolean = False
+    Private ultima_factura_id As Integer
 
     Public Sub New()
         ' This call is required by the designer.
@@ -22,6 +23,7 @@ Public Class VendeloFRM
         removerBtn.Hide()
         agregarBtn.Hide()
         completarVentaBtn.Hide()
+        Me.reciboUltimaBtn.Hide()
         Me.llenarProductosDisponibles()
         Me.llenarClientesDisponibles()
     End Sub
@@ -114,6 +116,39 @@ Public Class VendeloFRM
                 .usuario_id = Form1.usuarioActual.id
                 }
         Me.FM.Insert(f)
-        MessageBox.Show(f.id.ToString())
+        f.id = Me.FM.idDeLaUltimaFactura()
+        Me.ultima_factura_id = f.id
+        For Each det As Detalle In Me.detalles
+            det.factura_id = f.id
+            Me.FM.InsertarDetalle(det)
+        Next det
+        Me.reciboUltimaBtn.Show()
+        Me.resetFinVenta()
+
+    End Sub
+
+    Private Sub resetFinVenta()
+        Me.hay_producto_seleccionado = False
+        agregarBtn.Hide()
+        Me.detalles.Clear()
+        Me.articulosDetalles.Clear()
+        Me.puede_completar_venta = False
+        completarVentaBtn.Hide()
+        Me.no_ha_agregado = True
+        removerBtn.Hide()
+        Me.total = 0
+        Me.llenarDetalles()
+        Me.llenarProductosDisponibles()
+    End Sub
+
+    Private Sub removerBtn_Click(sender As Object, e As EventArgs) Handles removerBtn.Click
+        Dim si = MessageBox.Show("Reiniciar Factura", "caption", MessageBoxButtons.OKCancel)
+        If si = DialogResult.OK Then
+            For Each art As Articulo In Me.articulosDetalles
+                art.cantidad = art.cantidad + 1
+                Me.sqlAM.Update(art)
+            Next art
+            Me.resetFinVenta()
+        End If
     End Sub
 End Class

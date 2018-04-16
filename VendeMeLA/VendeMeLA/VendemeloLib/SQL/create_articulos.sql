@@ -114,3 +114,5 @@ SELECT * FROM factura
 SELECT SCOPE_IDENTITY()
 
 SELECT IDENT_CURRENT('factura') as total
+
+SELECT * FROM detalles
