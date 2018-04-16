@@ -7,10 +7,13 @@ Public Class VendeloFRM
     Private CM As ClientesManager = New ClientesManager()
     Private detalles As List(Of Detalle)
     Private factura As Factura
+    Private hay_producto_seleccionado As Boolean = False
 
     Public Sub New()
         ' This call is required by the designer.
         InitializeComponent()
+        removerBtn.Hide()
+        agregarBtn.Hide()
         Me.llenarProductosDisponibles()
         Me.llenarClientesDisponibles()
     End Sub
@@ -39,6 +42,12 @@ Public Class VendeloFRM
 
     Private Sub articulosList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles articulosList.SelectedIndexChanged
         Me.sounds.clickSound.Play()
+        If Not Me.hay_producto_seleccionado Then
+            Me.hay_producto_seleccionado = True
+            removerBtn.Show()
+            agregarBtn.Show()
+        End If
+
         Dim val As String = articulosList.SelectedItem.ToString()
         Dim pieces As Array = val.Split("#")
         System.Console.WriteLine(pieces(0))
