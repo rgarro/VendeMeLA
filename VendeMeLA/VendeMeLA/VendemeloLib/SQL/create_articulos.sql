@@ -107,3 +107,10 @@ ON UPDATE CASCADE
 GO
 ALTER TABLE [detalles] CHECK CONSTRAINT [detalles_fk1]
 GO
+
+
+select current_timestamp
+SELECT * FROM factura
+SELECT SCOPE_IDENTITY()
+
+SELECT IDENT_CURRENT('factura') as total

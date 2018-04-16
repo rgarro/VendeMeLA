@@ -25,7 +25,6 @@ Partial Class VendeloFRM
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(VendeloFRM))
         Me.articulosList = New System.Windows.Forms.ListBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.preventaList = New System.Windows.Forms.ListView()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.removerBtn = New System.Windows.Forms.Button()
@@ -35,6 +34,7 @@ Partial Class VendeloFRM
         Me.Label6 = New System.Windows.Forms.Label()
         Me.clientesList = New System.Windows.Forms.ListBox()
         Me.agregarBtn = New System.Windows.Forms.Button()
+        Me.preventaList = New System.Windows.Forms.ListBox()
         Me.SuspendLayout()
         '
         'articulosList
@@ -54,14 +54,6 @@ Partial Class VendeloFRM
         Me.Label1.Size = New System.Drawing.Size(192, 14)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Articulos Disponibles"
-        '
-        'preventaList
-        '
-        Me.preventaList.Location = New System.Drawing.Point(287, 43)
-        Me.preventaList.Name = "preventaList"
-        Me.preventaList.Size = New System.Drawing.Size(307, 133)
-        Me.preventaList.TabIndex = 2
-        Me.preventaList.UseCompatibleStateImageBehavior = False
         '
         'Label2
         '
@@ -156,11 +148,20 @@ Partial Class VendeloFRM
         Me.agregarBtn.Text = "Agregar"
         Me.agregarBtn.UseVisualStyleBackColor = True
         '
+        'preventaList
+        '
+        Me.preventaList.FormattingEnabled = True
+        Me.preventaList.Location = New System.Drawing.Point(281, 43)
+        Me.preventaList.Name = "preventaList"
+        Me.preventaList.Size = New System.Drawing.Size(294, 95)
+        Me.preventaList.TabIndex = 12
+        '
         'VendeloFRM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(708, 393)
+        Me.Controls.Add(Me.preventaList)
         Me.Controls.Add(Me.agregarBtn)
         Me.Controls.Add(Me.clientesList)
         Me.Controls.Add(Me.Label6)
@@ -170,7 +171,6 @@ Partial Class VendeloFRM
         Me.Controls.Add(Me.removerBtn)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.preventaList)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.articulosList)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -183,7 +183,6 @@ Partial Class VendeloFRM
 
     Friend WithEvents articulosList As ListBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents preventaList As ListView
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents removerBtn As Button
@@ -193,4 +192,5 @@ Partial Class VendeloFRM
     Friend WithEvents Label6 As Label
     Friend WithEvents clientesList As ListBox
     Friend WithEvents agregarBtn As Button
+    Friend WithEvents preventaList As ListBox
 End Class

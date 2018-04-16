@@ -15,7 +15,7 @@ Public Class MSSQLDBObject
 
 
     Protected Overrides Sub Finalize()
-        Me.conn.Close()
+        'Me.conn.Close()
     End Sub
 
 End Class
