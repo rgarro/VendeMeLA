@@ -29,8 +29,8 @@ Partial Class VendeloFRM
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.removerBtn = New System.Windows.Forms.Button()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.labelTotal = New System.Windows.Forms.Label()
+        Me.completarVentaBtn = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.clientesList = New System.Windows.Forms.ListBox()
@@ -93,27 +93,27 @@ Partial Class VendeloFRM
         Me.removerBtn.Text = "Remover"
         Me.removerBtn.UseVisualStyleBackColor = True
         '
-        'Label4
+        'labelTotal
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("BankGothic Md BT", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.Label4.Location = New System.Drawing.Point(485, 192)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(63, 14)
-        Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Total :"
+        Me.labelTotal.AutoSize = True
+        Me.labelTotal.Font = New System.Drawing.Font("BankGothic Md BT", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelTotal.ForeColor = System.Drawing.SystemColors.HotTrack
+        Me.labelTotal.Location = New System.Drawing.Point(485, 192)
+        Me.labelTotal.Name = "labelTotal"
+        Me.labelTotal.Size = New System.Drawing.Size(63, 14)
+        Me.labelTotal.TabIndex = 6
+        Me.labelTotal.Text = "Total :"
         '
-        'Button2
+        'completarVentaBtn
         '
-        Me.Button2.Font = New System.Drawing.Font("BankGothic Md BT", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.Green
-        Me.Button2.Location = New System.Drawing.Point(308, 353)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(307, 23)
-        Me.Button2.TabIndex = 7
-        Me.Button2.Text = "Completar Venta"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.completarVentaBtn.Font = New System.Drawing.Font("BankGothic Md BT", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.completarVentaBtn.ForeColor = System.Drawing.Color.Green
+        Me.completarVentaBtn.Location = New System.Drawing.Point(308, 353)
+        Me.completarVentaBtn.Name = "completarVentaBtn"
+        Me.completarVentaBtn.Size = New System.Drawing.Size(307, 23)
+        Me.completarVentaBtn.TabIndex = 7
+        Me.completarVentaBtn.Text = "Completar Venta"
+        Me.completarVentaBtn.UseVisualStyleBackColor = True
         '
         'Label5
         '
@@ -165,8 +165,8 @@ Partial Class VendeloFRM
         Me.Controls.Add(Me.clientesList)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.completarVentaBtn)
+        Me.Controls.Add(Me.labelTotal)
         Me.Controls.Add(Me.removerBtn)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -187,8 +187,8 @@ Partial Class VendeloFRM
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents removerBtn As Button
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Button2 As Button
+    Friend WithEvents labelTotal As Label
+    Friend WithEvents completarVentaBtn As Button
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents clientesList As ListBox
