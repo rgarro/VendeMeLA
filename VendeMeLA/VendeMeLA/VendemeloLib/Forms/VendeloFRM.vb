@@ -1,4 +1,8 @@
 ﻿Imports VendeMeLA
+Imports PdfSharp
+Imports PdfSharp.Drawing
+Imports PdfSharp.Pdf
+
 
 Public Class VendeloFRM
 
@@ -16,6 +20,7 @@ Public Class VendeloFRM
     Private no_ha_agregado As Boolean = True
     Private puede_completar_venta As Boolean = False
     Private ultima_factura_id As Integer
+    Private texto_factura As String
 
     Public Sub New()
         ' This call is required by the designer.
@@ -128,6 +133,7 @@ Public Class VendeloFRM
     End Sub
 
     Private Sub resetFinVenta()
+        Me.facturaJob()
         Me.hay_producto_seleccionado = False
         agregarBtn.Hide()
         Me.detalles.Clear()
@@ -139,6 +145,25 @@ Public Class VendeloFRM
         Me.total = 0
         Me.llenarDetalles()
         Me.llenarProductosDisponibles()
+    End Sub
+
+    Private Sub facturaJob()
+        Dim doc As Pdf.PdfDocument = New Pdf.PdfDocument()
+        Dim page As Pdf.PdfPage = doc.AddPage()
+        Dim gfx As XGraphics = XGraphics.FromPdfPage(page)
+        Dim font As XFont = New XFont("Verdana", 20, XFontStyle.BoldItalic)
+        Me.setTextoFactura()
+        gfx.DrawString(Me.texto_factura, font, XBrushes.Black, New XRect(0, 0, page.Width, page.Height), XStringFormats.TopLeft)
+        'Save the document...
+        Dim filename As String = "Factura#" & Me.ultima_factura_id & ".pdf"
+        doc.Save(filename)
+        Process.Start(filename)
+    End Sub
+
+    Private Sub setTextoFactura()
+        Me.texto_factura = "Factura #" & Me.ultima_factura_id & vbCrLf
+        Me.texto_factura &= "Factura #" & Me.ultima_factura_id & Environment.NewLine
+
     End Sub
 
     Private Sub removerBtn_Click(sender As Object, e As EventArgs) Handles removerBtn.Click

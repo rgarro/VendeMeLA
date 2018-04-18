@@ -172,7 +172,7 @@ Partial Class VendeloFRM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(708, 393)
+        Me.ClientSize = New System.Drawing.Size(1056, 393)
         Me.Controls.Add(Me.reciboUltimaBtn)
         Me.Controls.Add(Me.preventaList)
         Me.Controls.Add(Me.agregarBtn)
